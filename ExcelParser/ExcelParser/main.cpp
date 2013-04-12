@@ -17,9 +17,18 @@ int main(int argc, const char * argv[])
     
     stack<string> postfija;
     list<string> salida;
+    string entrada="-4*(-5-2)/(-1*2=x-(-3))";
    
+    for (int a=0; a<entrada.size(); ++a) {
+        if (entrada[a]>='0' && entrada[a]<='9'){
+        
+        }
+        
+    }
     
-    
+
+        
+        
     
     return 0;
 }
