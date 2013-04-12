@@ -8,17 +8,18 @@
 
 #include <iostream>
 #include <stack>
+#include <list>
 using namespace std;
 
 
 int main(int argc, const char * argv[])
 {
     
-    stack<string> S;
-    S.push("86");
-    S.push("34");
-    S.push("22");
-    cout<<S.top();
+    stack<string> postfija;
+    list<string> salida;
+   
+    
+    
     
     return 0;
 }
