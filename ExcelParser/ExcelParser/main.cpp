@@ -94,7 +94,7 @@ int main(int argc, const char * argv[])
 	}
 	
 	/// FIN del postFijo
-	cout<<"----------------------------"<<endl;
+	cout<<"-:)---------------------------"<<endl;
 	while(!salida.empty()){
 		cout<<salida.front()<<endl;
 		salida.pop_front();
