@@ -7,54 +7,104 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include <stack>
 #include <list>
+#include <string.h>
+
 using namespace std;
 
+int preOp(char op){
+    if (op =='+'||op == '-') return 0;
+    else if (op == '*'||op == '/') return 1;
+    else if (op ==  '^') return 2;
+    else
+        return -1;																								
+    return 0;
+};
+
+string obtCad(string &cad){
+	string aux;
+	if (cad.size()==0){
+			return "";
+	}
+	else{
+		unsigned pos = cad.find(" ");
+		aux = cad.substr (0,pos+1);
+		cad.replace(0,pos+1,"");
+	}
+	return aux;
+}
 
 int main(int argc, const char * argv[])
 {
-    
-    stack<string> postfija;
-    list<string> salida;
-    string entrada="-467*(-5-2)/(-1*2=x-(-3))";
-    string bufferNum="";
-    for (int a=0; a<entrada.size(); ++a) {
-        if (entrada[a]>='0' && entrada[a]<='9'){
-            
-            //for (int b=0;(a+b)<=entrada.size()&&(entrada[a+b]>='0' && entrada[a+b]<='9');++b){
-              //  buffer+=entrada[a+b];
-            //}
-            bufferNum+=entrada[a];
-                cout<<bufferNum<<" Es un numero"<<endl;
-            
-        }
-        
-        else if ((entrada[a]>='a' && entrada[a]<='z')|| (entrada[a]>='A' && entrada[a]<='Z')){
-            cout<<entrada[a]<<" Es un variable"<<endl;
-            bufferNum="";
-        }
-        
-        else if (entrada[a]=='('){
-            cout<<entrada[a]<<" parentesis izquierdo"<<endl;
-            bufferNum="";
-        }
-        else if (entrada[a]==')'){
-            cout<<entrada[a]<<" parentesis derecho"<<endl;
-            bufferNum="";
-        }
-        
-        else {
-                cout<<entrada[a]<<" operador"<<endl;
-            bufferNum="";
-        }
-        
-    }
-    
-
-        
-        
-    
+    string buffer;
+    string bufferAux;
+    stack<string> aux;
+    list <string> salida;
+   // cout<<!aux.empty()<<endl;
+   //buffer  = "(233+(11+1)/25*(61+2))";
+   buffer  = "3+(-1)";
+	//buffer ="1+242/12*12";
+	
+	bufferAux="";
+	for(int i =0;i<(int)buffer.size();++i){
+			if(isdigit(buffer[i])){
+				bufferAux=buffer[i];
+				while(i+1<(int)buffer.size()&&isdigit(buffer[i+1])){
+					++i;
+					bufferAux+=buffer[i];
+				}
+				
+				salida.push_back(bufferAux);
+				bufferAux="";				
+			}
+			else if(buffer[i]=='('){
+				bufferAux=buffer[i];
+				aux.push(bufferAux);
+				bufferAux="";
+			}
+			else if(buffer[i]==')'){
+				while(!aux.empty()&&aux.top()[0]!='('){
+					salida.push_back(aux.top());
+					aux.pop();
+				}
+				if(!aux.empty()&&aux.top()[0]=='('){
+					aux.pop();
+				}
+				else
+					cout<<"Error en el ingreso"<<endl;
+			}
+			else {
+			
+				while(!aux.empty()&&preOp(aux.top()[0])>=preOp(buffer[i])){
+					salida.push_back(aux.top());
+					aux.pop();
+				}
+				bufferAux=buffer[i];
+				aux.push(bufferAux);
+				bufferAux="";
+			}	
+			
+	}	
+	
+	while(!aux.empty()){
+		salida.push_back(aux.top());
+		aux.pop();
+	}
+	
+	/// FIN del postFijo
+	cout<<"----------------------------"<<endl;
+	while(!salida.empty()){
+		cout<<salida.front()<<endl;
+		salida.pop_front();
+	}
+		cout<<"----------------------------"<<endl;
+	while(!aux.empty()){
+		cout<<aux.top()<<endl;
+		aux.pop();
+	}
+	char a;
+	cin>>a;
     return 0;
 }
-
