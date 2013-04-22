@@ -36,15 +36,24 @@ string obtCad(string &cad){
 	return aux;
 }
 
+const string funciones[]={"1 2 3 4 5 6 7 8 9 0 ( ) x e + - * / ^ %",
+							"pi",
+							"ln(",
+							"log( abs( sen( sin( cos( tan( sec( csc( cot( sgn(",
+							"rnd() asen( asin( acos( atan( asec( acsc( acot( senh( sinh( cosh( tanh( sech( csch( coth( sqrt(",
+							"round( asenh( acosh( atanh( asech( acsch( acoth("};
+	
 int main(int argc, const char * argv[])
 {
     string buffer;
     string bufferAux;
     stack<string> aux;
     list <string> salida;
+    
+    						
    // cout<<!aux.empty()<<endl;
-   //buffer  = "(233+(11+1)/25*(61+2))";
-   buffer  = "3+(-1)";
+   buffer  = "XXX+tan(x)-(233+(11+1)/25*(61+X/2))";
+   //buffer  = "3+(-1)";
 	//buffer ="1+242/12*12";
 	
 	bufferAux="";
@@ -59,6 +68,18 @@ int main(int argc, const char * argv[])
 				salida.push_back(bufferAux);
 				bufferAux="";				
 			}
+			////////////////////////////////////
+			else if(isalpha(buffer[i])){
+                bufferAux=buffer[i];
+				while(i+1<(int)buffer.size()&&isalpha(buffer[i+1])){
+					++i;
+					bufferAux+=buffer[i];
+				}
+				
+				salida.push_back(bufferAux);
+				bufferAux="";				
+			}
+            ////////////////////////////////////
 			else if(buffer[i]=='('){
 				bufferAux=buffer[i];
 				aux.push(bufferAux);
