@@ -48,10 +48,12 @@ int main(int argc, const char * argv[])
     						
    // cout<<!aux.empty()<<endl;
    //buffer  = "X1+tan(x)-(233+(11+1)/25*(61+X/2)";
-   //buffer  = "3+(-1)";
+   buffer  = "ln((+2)*(ln(log((-3)/(-1)))-10)*(-1))";
 	//buffer ="1+242/12*12";
-	buffer = "ln(1+100/log(x+tan(5/3))*6)";
-	bufferAux="";
+	//buffer = "ln(1+(-100)/log(x+tan(5/3))*(-6)";
+	//buffer="(-1)*3/(-1)";
+    //buffer = "ln((-2)/(-1)+2)";
+    bufferAux="";
 	for(int i =0;i<(int)buffer.size();++i){
 			if(isdigit(buffer[i])){
 				bufferAux=buffer[i];
@@ -83,10 +85,21 @@ int main(int argc, const char * argv[])
 			}
             ////////////////////////////////////
 			else if(buffer[i]=='('){
-				bufferAux=buffer[i];
-				aux.push(bufferAux);
-				bufferAux="";
-			}
+                bufferAux=buffer[i];
+                aux.push(bufferAux);
+                bufferAux="";
+                if(buffer[i+1]=='+'||buffer[i+1]=='-'){
+                    ++i;
+                    bufferAux=buffer[i];
+                    while(i+1<(int)buffer.size()&&isdigit(buffer[i+1])){
+                        ++i;
+                        bufferAux+=buffer[i];
+                    }
+                    
+                    salida.push_back(bufferAux);
+                    bufferAux="";				
+                }
+            }
 			else if(buffer[i]==')'){
 				while(!aux.empty()&&aux.top()[0]!='('){//podrian ser aux.top()[0]//aux.top()[aux.top().size()-1]
 					salida.push_back(aux.top());
