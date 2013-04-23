@@ -24,7 +24,19 @@ int preOp(char op){
     return 0;
 };
 
-const map<string,int> miFuncion;
+const string funciones[]  =   { "ln",
+    "log", "abs", "sen", "sin", "cos", "tan", "sec", "csc", "cot", "sgn","rnd",
+    "asen", "asin", "acos", "atan", "asec", "acsc", "acot", "senh", "sinh", "cosh", "tanh", "sech", "csch", "coth", "sqrt",
+    "round", "asenh", "acosh", "atanh", "asech", "acsch", "acoth"};
+
+
+int esFuncion(string funcion){
+    for(int i =1;i<=sizeof(funciones)/sizeof(string);++i){
+        if (funcion==funciones[i-1])
+            return i;
+    }
+    return 0;
+}
 	
 int main(int argc, const char * argv[])
 {
@@ -35,10 +47,10 @@ int main(int argc, const char * argv[])
     
     						
    // cout<<!aux.empty()<<endl;
-   buffer  = "X1+tan(x)-(233+(11+1)/25*(61+X/2)";
+   //buffer  = "X1+tan(x)-(233+(11+1)/25*(61+X/2)";
    //buffer  = "3+(-1)";
 	//buffer ="1+242/12*12";
-	//buffer = "(x+tan(5/3))";
+	buffer = "1+100/log(x+tan(5/3))*6";
 	bufferAux="";
 	for(int i =0;i<(int)buffer.size();++i){
 			if(isdigit(buffer[i])){
@@ -60,8 +72,14 @@ int main(int argc, const char * argv[])
 				}
                 /// aqui se coloca si es una funcion que esta en la tabla entonces se trata como operador
 				
-				salida.push_back(bufferAux);
-				bufferAux="";				
+                if (esFuncion( bufferAux)) {
+                    aux.push(bufferAux);
+                    bufferAux="";
+                }
+                else{
+                    salida.push_back(bufferAux);
+                    bufferAux="";
+                }
 			}
             ////////////////////////////////////
 			else if(buffer[i]=='('){
@@ -70,11 +88,11 @@ int main(int argc, const char * argv[])
 				bufferAux="";
 			}
 			else if(buffer[i]==')'){
-				while(!aux.empty()&&aux.top()[aux.top().size()-1]!='('){
+				while(!aux.empty()&&aux.top()[0]!='('){//podrian ser aux.top()[0]//aux.top()[aux.top().size()-1]
 					salida.push_back(aux.top());
 					aux.pop();
 				}
-				if(!aux.empty()&&aux.top()[aux.top().size()-1]=='('){
+				if(!aux.empty()&&aux.top()[0]=='('){//podrian ser aux.top()[0]
 					aux.pop();
 				}
 				else
@@ -82,7 +100,7 @@ int main(int argc, const char * argv[])
 			}
 			else {
 			
-				while(!aux.empty()&&preOp(aux.top()[0])>=preOp(buffer[i])){
+				while(!aux.empty()&&(esFuncion(aux.top())||preOp(aux.top()[0])>=preOp(buffer[i]))){
 					salida.push_back(aux.top());
 					aux.pop();
 				}
