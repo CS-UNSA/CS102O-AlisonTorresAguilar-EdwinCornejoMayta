@@ -50,7 +50,7 @@ int main(int argc, const char * argv[])
    //buffer  = "X1+tan(x)-(233+(11+1)/25*(61+X/2)";
    //buffer  = "3+(-1)";
 	//buffer ="1+242/12*12";
-	buffer = "1+100/log(x+tan(5/3))*6";
+	buffer = "ln(1+100/log(x+tan(5/3))*6)";
 	bufferAux="";
 	for(int i =0;i<(int)buffer.size();++i){
 			if(isdigit(buffer[i])){
