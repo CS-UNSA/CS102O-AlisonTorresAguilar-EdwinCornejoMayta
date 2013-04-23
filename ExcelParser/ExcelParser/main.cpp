@@ -11,6 +11,7 @@
 #include <stack>
 #include <list>
 #include <string.h>
+#include <map>
 
 using namespace std;
 
@@ -23,25 +24,7 @@ int preOp(char op){
     return 0;
 };
 
-string obtCad(string &cad){
-	string aux;
-	if (cad.size()==0){
-			return "";
-	}
-	else{
-		unsigned pos = cad.find(" ");
-		aux = cad.substr (0,pos+1);
-		cad.replace(0,pos+1,"");
-	}
-	return aux;
-}
-
-const string funciones[]={"1 2 3 4 5 6 7 8 9 0 ( ) x e + - * / ^ %",
-							"pi",
-							"ln(",
-							"log( abs( sen( sin( cos( tan( sec( csc( cot( sgn(",
-							"rnd() asen( asin( acos( atan( asec( acsc( acot( senh( sinh( cosh( tanh( sech( csch( coth( sqrt(",
-							"round( asenh( acosh( atanh( asech( acsch( acoth("};
+const map<string,int> miFuncion;
 	
 int main(int argc, const char * argv[])
 {
@@ -52,10 +35,10 @@ int main(int argc, const char * argv[])
     
     						
    // cout<<!aux.empty()<<endl;
-   buffer  = "XXX+tan(x)-(233+(11+1)/25*(61+X/2))";
+   buffer  = "X1+tan(x)-(233+(11+1)/25*(61+X/2)";
    //buffer  = "3+(-1)";
 	//buffer ="1+242/12*12";
-	
+	//buffer = "(x+tan(5/3))";
 	bufferAux="";
 	for(int i =0;i<(int)buffer.size();++i){
 			if(isdigit(buffer[i])){
@@ -71,10 +54,11 @@ int main(int argc, const char * argv[])
 			////////////////////////////////////
 			else if(isalpha(buffer[i])){
                 bufferAux=buffer[i];
-				while(i+1<(int)buffer.size()&&isalpha(buffer[i+1])){
+				while(i+1<(int)buffer.size()&&isalnum(buffer[i+1])){
 					++i;
 					bufferAux+=buffer[i];
 				}
+                /// aqui se coloca si es una funcion que esta en la tabla entonces se trata como operador
 				
 				salida.push_back(bufferAux);
 				bufferAux="";				
@@ -86,11 +70,11 @@ int main(int argc, const char * argv[])
 				bufferAux="";
 			}
 			else if(buffer[i]==')'){
-				while(!aux.empty()&&aux.top()[0]!='('){
+				while(!aux.empty()&&aux.top()[aux.top().size()-1]!='('){
 					salida.push_back(aux.top());
 					aux.pop();
 				}
-				if(!aux.empty()&&aux.top()[0]=='('){
+				if(!aux.empty()&&aux.top()[aux.top().size()-1]=='('){
 					aux.pop();
 				}
 				else
@@ -110,17 +94,23 @@ int main(int argc, const char * argv[])
 	}	
 	
 	while(!aux.empty()){
-		salida.push_back(aux.top());
-		aux.pop();
+        if (aux.top()[aux.top().size()-1]!='(') {
+            salida.push_back(aux.top());
+            aux.pop();
+        }
+        else{
+            cout<<"Error en el ingreso"<<endl;
+            aux.pop();
+        }
 	}
 	
 	/// FIN del postFijo
-	cout<<"-:)---------------------------"<<endl;
+	cout<<"----------------------------"<<endl;
 	while(!salida.empty()){
 		cout<<salida.front()<<endl;
 		salida.pop_front();
 	}
-		cout<<"----------------------------"<<endl;
+    cout<<"----------------------------"<<endl;
 	while(!aux.empty()){
 		cout<<aux.top()<<endl;
 		aux.pop();
