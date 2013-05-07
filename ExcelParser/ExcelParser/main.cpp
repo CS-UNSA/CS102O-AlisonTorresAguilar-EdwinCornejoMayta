@@ -46,7 +46,7 @@ int main(int argc, const char * argv[])
     list <string> salida;
     
     						
-   // cout<<!aux.empty()<<endl;
+  
    //buffer  = "X1+tan(x)-(233+(11+1)/25*(61+X/2)";
    buffer  = "ln((+2)*(ln(log((-3)/(-1)))-10)*(-1))";
 	//buffer ="1+242/12*12";
@@ -146,7 +146,10 @@ int main(int argc, const char * argv[])
 		cout<<aux.top()<<endl;
 		aux.pop();
 	}
-	char a;
-	cin>>a;
+    char a[]={'h','o','l','a'};
+    char b;
+    cin>>b;
+    cout<<a[1]<<endl;
+    cout<<3[a]<<endl;
     return 0;
 }
