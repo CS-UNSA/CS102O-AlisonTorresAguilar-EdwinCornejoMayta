@@ -41,7 +41,7 @@ string toStr( int n ){
 
 bool isNumber(string word){
 	bool flag =true ;
-	int i= (word[0]=='-'||word[i]=='+');
+	int i= (word[0]=='-'||word[0]=='+');
 	for(;i<(int)word.length();++i)
 		flag=flag && (isdigit(word[i])||word[i]=='.');
 		
