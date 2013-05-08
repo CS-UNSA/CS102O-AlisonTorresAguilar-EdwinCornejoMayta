@@ -5,7 +5,7 @@
 //  Created by Alison Torres Aguilar - Edwin Cornejo Mayta on 11/04/13.
 //  Copyright (c) 2013 CS-UNSA. All rights reserved.
 //
-
+//:)
 #include <iostream>
 #include <fstream>
 #include <stack>
@@ -16,6 +16,43 @@
 #include <sstream>
 
 using namespace std;
+
+//-----------------------------Evaluador---------------------------------
+template <class T>
+T suma(T a,T b){
+	return (a+b);
+	}
+
+template <class T>
+T resta(T a,T b){
+	return (a-b);
+	}
+	
+template <class T>
+T multiplicacion(T a,T b){
+	return (a*b);
+	}
+	
+template <class T>
+T division(T a,T b){
+	if(b==0)
+		throw "Division by zero condition!";
+	return (a/b);	
+	}
+
+template <class T>
+T evaluar(T a,T b,string opt){ 	
+	
+	typedef T (*f)(T,T) ;
+	map<string,f> opciones;
+	opciones["+"]=&::suma;
+	opciones["-"]=&::resta;
+	opciones["*"]=&::multiplicacion;
+	opciones["/"]=&::division;
+	
+	return (*opciones[opt])(a,b);
+	}
+//-----------------------------------------------------------------------
 
 int toInt( string s ){
     int n;
@@ -41,7 +78,9 @@ string toStr( int n ){
 
 bool isNumber(string word){
 	bool flag =true ;
+
 	int i= (word[0]=='-'||word[0]=='+');
+	flag=!(i&&(word.length()==1));
 	for(;i<(int)word.length();++i)
 		flag=flag && (isdigit(word[i])||word[i]=='.');
 		
@@ -81,8 +120,8 @@ int main(int argc, const char * argv[])
     						
   
    //buffer  = "X1+tan(x)-(233+(11+1)/25*(61+X/2)";
-   //buffer  = "ln((+2)*(ln(log((-3)/(-1)))-10)*(-1))";
-   buffer  = "(-7+-1)/7.0"; 
+  // buffer  = "ln((+2)*(ln(log((-3)/(-1)))-10)*(-1))";
+   buffer  = "25/(1*0)"; 
 	//buffer ="1+242/12*12";
 	//buffer = "ln(1+(-100)/log(x+tan(5/3))*(-6)";
 	//buffer="(-1)*3/(-1)";
@@ -182,22 +221,12 @@ int main(int argc, const char * argv[])
 				eval.pop();
 				op2=eval.top();
 				eval.pop();
-				switch(temp[0])
-				{
-					case '+':
-									rpt=op2+op1;
-									
-						break;
-					case '-':
-									rpt=op2-op1;
-						break;
-					case '/':
-									rpt=op2/op1;
-						break;
-					case '*':
-									rpt=op2*op1;
-						break;
-				}
+				//Evaluar para binarios
+				try {
+						rpt=evaluar(op2,op1,temp);
+					}catch(const char* msg){
+						cerr << msg << endl;
+					}
 				eval.push(rpt);
 				}
 		
