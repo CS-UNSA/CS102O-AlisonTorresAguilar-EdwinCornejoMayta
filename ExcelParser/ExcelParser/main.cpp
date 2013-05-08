@@ -10,10 +10,43 @@
 #include <fstream>
 #include <stack>
 #include <list>
+#include <vector>
 #include <string.h>
 #include <map>
+#include <sstream>
 
 using namespace std;
+
+int toInt( string s ){
+    int n;
+    stringstream ss( s );
+    ss>>n;
+    return n;
+}
+
+double  toDouble( string s ){
+    double n;
+    stringstream ss( s );
+    ss>>n;
+    return n;
+}
+
+string toStr( int n ){
+    string s;
+    stringstream ss;
+    ss<<n;
+    ss>>s;
+    return s;
+}
+
+bool isNumber(string word){
+	bool flag =true ;
+	int i= (word[0]=='-'||word[i]=='+');
+	for(;i<(int)word.length();++i)
+		flag=flag && (isdigit(word[i])||word[i]=='.');
+		
+	return flag;
+	}
 
 int preOp(char op){
     if (op =='+'||op == '-') return 0;
@@ -31,7 +64,7 @@ const string funciones[]  =   { "ln",
 
 
 int esFuncion(string funcion){
-    for(int i =1;i<=sizeof(funciones)/sizeof(string);++i){
+    for(int i =1;i<=(int)(sizeof(funciones)/sizeof(string));++i){
         if (funcion==funciones[i-1])
             return i;
     }
@@ -43,12 +76,13 @@ int main(int argc, const char * argv[])
     string buffer;
     string bufferAux;
     stack<string> aux;
-    list <string> salida;
+    vector <string> salida;
     
     						
   
    //buffer  = "X1+tan(x)-(233+(11+1)/25*(61+X/2)";
-   buffer  = "ln((+2)*(ln(log((-3)/(-1)))-10)*(-1))";
+   //buffer  = "ln((+2)*(ln(log((-3)/(-1)))-10)*(-1))";
+   buffer  = "(-7+-1)/7.0"; 
 	//buffer ="1+242/12*12";
 	//buffer = "ln(1+(-100)/log(x+tan(5/3))*(-6)";
 	//buffer="(-1)*3/(-1)";
@@ -57,7 +91,7 @@ int main(int argc, const char * argv[])
 	for(int i =0;i<(int)buffer.size();++i){
 			if(isdigit(buffer[i])){
 				bufferAux=buffer[i];
-				while(i+1<(int)buffer.size()&&isdigit(buffer[i+1])){
+				while(i+1<(int)buffer.size()&&(isdigit(buffer[i+1]) || buffer[i+1]=='.')){
 					++i;
 					bufferAux+=buffer[i];
 				}
@@ -135,7 +169,46 @@ int main(int argc, const char * argv[])
         }
 	}
 	
+	stack<double> eval;
+	string temp;
+	double op1,op2,rpt;
+	while(!salida.empty()){
+		temp =salida.front();
+		if(isNumber(temp)){
+			eval.push(toDouble(temp));
+			cout<<temp<<endl;}
+		else{
+				op1=eval.top();
+				eval.pop();
+				op2=eval.top();
+				eval.pop();
+				switch(temp[0])
+				{
+					case '+':
+									rpt=op2+op1;
+									
+						break;
+					case '-':
+									rpt=op2-op1;
+						break;
+					case '/':
+									rpt=op2/op1;
+						break;
+					case '*':
+									rpt=op2*op1;
+						break;
+				}
+				eval.push(rpt);
+				}
+		
+		salida.erase(salida.begin());
+	}
+	
+	cout<<eval.top()<<endl;
+	
+	
 	/// FIN del postFijo
+	/*
 	cout<<"----------------------------"<<endl;
 	while(!salida.empty()){
 		cout<<salida.front()<<endl;
@@ -146,10 +219,6 @@ int main(int argc, const char * argv[])
 		cout<<aux.top()<<endl;
 		aux.pop();
 	}
-    char a[]={'h','o','l','a'};
-    char b;
-    cin>>b;
-    cout<<a[1]<<endl;
-    cout<<3[a]<<endl;
+    */
     return 0;
 }
