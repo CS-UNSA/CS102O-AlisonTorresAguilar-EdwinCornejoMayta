@@ -23,9 +23,11 @@ gui::gui(int rows, int cols, QWidget *parent)
         tabla->setVerticalHeaderItem(c, new QTableWidgetItem(numero));
 
     }
-    tabla->setItemPrototype(tabla->item(rows -1, cols - 1));
+    QString item1= QString::number(10.56);
 
-//    table->adjustSize();
+    tabla->setItemPrototype(tabla->item(rows -1, cols - 1));
+    tabla->setItem(1,1,new QTableWidgetItem(item1));
+    //table->adjustSize();
     tabla->resize(640,440);
 
 
