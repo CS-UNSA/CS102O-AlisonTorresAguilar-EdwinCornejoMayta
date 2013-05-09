@@ -11,7 +11,13 @@ public:
     explicit gui(int rows, int cols, QWidget *parent = 0);
 
 private:
-    QTableWidget *table;
+    QTableWidget *tabla;
+    QToolBar *barraHerramientas;
+    QLabel *etiquetaCelda;
+    QLineEdit *ingresoFormula;
+
+
+
 signals:
     
 public slots:
