@@ -1,0 +1,17 @@
+    /** Function to do an inorder traversal of the tree.*/
+    void inorderTraversal() const;
+    
+    /** Function to do a preorder traversal of the tree.*/
+    void preorderTraversal() const;
+    
+    /** Function to do a postorder traversal of the tree. */
+    void postorderTraversal() const;
+    
+    /** Returns the height of the tree.*/
+    int treeHeight() const;
+    
+    /** Returns the number of nodes in tree.*/
+    int treeNodeCount() const;
+    
+    /** Returns the number of leaves in the binary tree. */      
+    int treeLeavesCount() const;
