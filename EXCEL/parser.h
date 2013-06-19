@@ -30,6 +30,7 @@ public:
     void toPostfix();
     inline  void setBuffer(string b){buffer=b;}
     inline  string getBuffer() {return buffer;}
+    int getPrecedingFunction(string fun);
 
 };
 
