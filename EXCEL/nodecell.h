@@ -1,7 +1,7 @@
 #ifndef NODECELL_H
 #define NODECELL_H
-#include "node.h"
-class nodeCell:public node
+
+class nodeCell
 {
 public:
     nodeCell();

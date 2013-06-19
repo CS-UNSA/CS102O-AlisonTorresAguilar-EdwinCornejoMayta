@@ -1,10 +1,12 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2013-05-20T20:43:31
+# Project created by QtCreator 2013-06-07T20:33:34
 #
 #-------------------------------------------------
 
 QT       += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = EXCEL
 TEMPLATE = app
@@ -12,22 +14,24 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         excelwindow.cpp \
-    node.cpp \
-    nodenumber.cpp \
-    nodecell.cpp \
-    nodeoperation.cpp \
     cell.cpp \
     matrix.cpp \
-    syntaxtree.cpp
+    node.cpp \
+    nodecell.cpp \
+    nodenumber.cpp \
+    nodeoperation.cpp \
+    syntaxtree.cpp \
+    parser.cpp
 
 HEADERS  += excelwindow.h \
-    node.h \
-    nodenumber.h \
-    nodecell.h \
-    nodeoperation.h \
-    definedtypes.h \
     cell.h \
+    definedtypes.h \
     matrix.h \
-    syntaxtree.h
+    node.h \
+    nodecell.h \
+    nodenumber.h \
+    nodeoperation.h \
+    syntaxtree.h \
+    parser.h
 
 FORMS    += excelwindow.ui

@@ -1,9 +1,7 @@
 #ifndef NODENUMBER_H
 #define NODENUMBER_H
 
-#include "definedtypes.h"
-#include "node.h"
-class nodeNumber : public node
+class nodeNumber
 {
 public:
     nodeNumber();

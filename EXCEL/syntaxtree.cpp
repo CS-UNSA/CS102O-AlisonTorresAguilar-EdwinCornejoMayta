@@ -8,7 +8,7 @@ void syntaxTree::insert(const int& insertItem)
 
     newNode = new node;
     assert(newNode != NULL);
-    newNode->value = insertItem;
+    //newNode->value = insertItem;
     //newNode->leftchild = NULL;
     //newNode->rightchild = NULL;
 /*

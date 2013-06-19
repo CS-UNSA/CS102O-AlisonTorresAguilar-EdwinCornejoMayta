@@ -37,7 +37,7 @@ public:
 
     inline void addCol();
 
-    inline void increaseSize(int h,int h);
+    inline void resize(int w,int h);
 
 
 };
