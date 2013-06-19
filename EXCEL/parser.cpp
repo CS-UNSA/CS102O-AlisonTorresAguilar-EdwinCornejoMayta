@@ -76,6 +76,7 @@ void parser::toPostfix(){
         t=tokenList.front();//sacar valor
         t_type=t.type;
         t_value=t.value;
+        cout<<t_type<<"el tipooooooo"<<endl;
 
         switch (t_type){
         case NUMBER:
@@ -99,9 +100,9 @@ void parser::toPostfix(){
             else
                 cout<<" error tipo 2";
             break;
-
+        case FUNCTION:
         case OPERATOR:
-            while (!outputStack.empty()&&(outputStack.top()).type==OPERATOR && getPrecedingFunction(outputStack.top().value)>=getPrecedingFunction(t_value)){
+            while (!outputStack.empty()&&((outputStack.top()).type==OPERATOR||(outputStack.top()).type==FUNCTION) && getPrecedingFunction(outputStack.top().value)>=getPrecedingFunction(t_value)){
                  stk=outputStack.top();
                  outputList.push_back(stk);
                  outputStack.pop();
@@ -119,8 +120,22 @@ void parser::toPostfix(){
           outputList.push_back(stk);
           outputStack.pop();
     }
+
     //delete outputStack;
 
+    //-----------------------------------------------------------
+    //Print postfix
+        list<token>::iterator it;
+
+        for(it=outputList.begin();it!=outputList.end();it++){
+            token temp= (*it);
+            cout<<" li "<<temp.value<<endl;
+        }
+
+
+    //-----------------------------------------------------------
+
 }// end of function
+
 
 
