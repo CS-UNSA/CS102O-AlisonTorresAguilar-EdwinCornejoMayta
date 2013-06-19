@@ -76,7 +76,6 @@ void parser::toPostfix(){
         t=tokenList.front();//sacar valor
         t_type=t.type;
         t_value=t.value;
-        cout<<t_type<<"el tipooooooo"<<endl;
 
         switch (t_type){
         case NUMBER:
