@@ -9,15 +9,21 @@ excelWindow::excelWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     parser * my=new parser();
-                my->buffer="5+((1+2)*4)-3";
-                my->buffer="-4*(-5-2)/(-1*x--3)";
-                 my->buffer="tag(4)+8";
-                cout<<"sss"<<endl;
+                my->buffer="5+((1+2)*4)-3"; // funciona ok 
+                my->buffer="-4*(-5-2)/(-1*x--3)"; // no evalua bien aun dobles signos 
+                my->buffer="tag(4)+8"; // funciona ok 
+                cout<<"----------------------------------------------------"<<endl;
                 my->getTokens();
-
+                cout<<"----------------------------------------------------"<<endl;
+                my->toPostfix();
+                cout<<"----------------------------------------------------"<<endl;
+                
+    
+                //Esto es una prueba de la funcion para obtener su precedencia de un operador o funcion
+                
                 int p=my->getPrecedingFunction("tag");
                 cout<<p<<" precedencia "<<endl;
-                my->toPostfix();
+                
 
 
 }
