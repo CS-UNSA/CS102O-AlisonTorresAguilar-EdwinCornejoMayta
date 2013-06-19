@@ -119,7 +119,7 @@ void parser::toPostfix(){
           outputList.push_back(stk);
           outputStack.pop();
     }
-    delete outputStack;
+    //delete outputStack;
 
 }// end of function
 
