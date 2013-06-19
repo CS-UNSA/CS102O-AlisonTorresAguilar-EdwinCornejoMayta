@@ -9,9 +9,16 @@ excelWindow::excelWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     parser * my=new parser();
-                my->buffer="tag)45)+A3";
+                my->buffer="5+((1+2)*4)-3";
+                my->buffer="-4*(-5-2)/(-1*x--3)";
+                 my->buffer="tag(4)+8";
                 cout<<"sss"<<endl;
                 my->getTokens();
+
+                int p=my->getPrecedingFunction("tag");
+                cout<<p<<" precedencia "<<endl;
+                my->toPostfix();
+
 
 }
 
