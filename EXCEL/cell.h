@@ -23,5 +23,4 @@ public:
     int getCol();
 
 };
-
 #endif // CELL_H

@@ -34,7 +34,8 @@ public:
     *   same info as insertItem, a node with the info insertItem
     *   is created and inserted in the binary search tree.
     *   @param insertItem the item to insert */
-     void insert(const int& insertItem);
+     void insertRight(const node& itemToInsert);
+     void insertLeft(const  node& itemToInsert);
 
      /** Function to delete deleteItem from the binary search tree
      *   Postcondition: If a node with the same info as deleteItem

@@ -1,7 +1,7 @@
 #ifndef NODEOPERATION_H
 #define NODEOPERATION_H
-
-class nodeOperation
+#include "node.h"
+class nodeOperation :public node
 {
 public:
     nodeOperation();

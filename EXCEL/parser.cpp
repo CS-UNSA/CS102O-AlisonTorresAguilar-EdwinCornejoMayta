@@ -64,8 +64,8 @@ int parser::getPrecedingFunction(string fun){
  return  functions[functions.find(fun)+fun.size()];
 }
 void parser::toPostfix(){
-    list<token>  outputList;
-    stack<token> outputStack;
+    //list<token>  outputList;
+    //stack<token> outputStack;
     token t;
     tokenValue t_value="";
     tokenType  t_type=NONE;
@@ -76,7 +76,7 @@ void parser::toPostfix(){
         t=tokenList.front();//sacar valor
         t_type=t.type;
         t_value=t.value;
-        cout<<t_type<<"el tipooooooo"<<endl;
+        //cout<<t_type<<"el tipooooooo"<<endl;
 
         switch (t_type){
         case NUMBER:
@@ -136,6 +136,33 @@ void parser::toPostfix(){
     //-----------------------------------------------------------
 
 }// end of function
+void parser::toBinaryTree(){
+    syntaxTree  auxTree;
+    stack<node> auxStack;
+    node *current;
+    while(!outputList.empty()){
+    tokenType type;
+        switch(type){
+        case NUMBER:
+            current=new nodeNumber();
+            break;
+        case VARIABLE:
+            current=new nodeCell();
+            break;
+        case EXPRESSION://EXPRESION (arbol)
 
+            break;
+        case LPARENTHESIS:// parentesis izquierdo
+            break;
+        case OPERATOR:
+        case FUNCTION:
+            break;
+
+        }
+    }
+
+
+
+}
 
 
