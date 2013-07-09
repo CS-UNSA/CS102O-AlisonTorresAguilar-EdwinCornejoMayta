@@ -4,6 +4,7 @@ parser::parser()
 {
     bufferSize=0;
 }
+
 void parser::getTokens(){
    bufferSize=buffer.length();
    token t;
@@ -137,32 +138,13 @@ void parser::toPostfix(){
 
 }// end of function
 void parser::toBinaryTree(){
-    syntaxTree  auxTree;
-    stack<node> auxStack;
-    node *current;
-    while(!outputList.empty()){
-    tokenType type;
-        switch(type){
-        case NUMBER:
-            current=new nodeNumber();
-            break;
-        case VARIABLE:
-            current=new nodeCell();
-            break;
-        case EXPRESSION://EXPRESION (arbol)
 
-            break;
-        case LPARENTHESIS:// parentesis izquierdo
-            break;
-        case OPERATOR:
-        case FUNCTION:
-            break;
-
-        }
-    }
-
-
-
+    syntaxTree tree(outputList);
+    tree.buildBinaryTree();
+    //tree.inorderTraversal();
+    //tree.postorderTraversal();
 }
 
+void parser::recorrer(){
 
+}

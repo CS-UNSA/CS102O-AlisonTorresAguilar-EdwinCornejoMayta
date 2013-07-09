@@ -1,0 +1,101 @@
+\hypertarget{classsyntaxTree}{\section{syntax\-Tree \-Class \-Reference}
+\label{classsyntaxTree}\index{syntax\-Tree@{syntax\-Tree}}
+}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classsyntaxTree_a96dfc5c8a6e58a037b3a2a540349acd0}{destroy\-Tree} ()
+\item 
+bool \hyperlink{classsyntaxTree_a877596bd5405c307a29a65889e4fbf89}{search} (const int \&search\-Item) const 
+\item 
+void \hyperlink{classsyntaxTree_ade062a0bf860a6b217738e4df84a3845}{insert} (const \hyperlink{classnode}{node} \&item\-To\-Insert)
+\item 
+void \hyperlink{classsyntaxTree_ad12b7769cf5ccb9f1d769a519d1d264d}{delete\-Node} (const int \&delete\-Item)
+\begin{DoxyCompactList}\small\item\em delete\-Node\-: \-Function to delete delete\-Item from the binary search tree \-Postcondition\-: \-If a node with the same info as delete\-Item is found, it is deleted from the binary search tree. \end{DoxyCompactList}\item 
+bool \hyperlink{classsyntaxTree_a197b8de3714d444fd55bb55ec371bae5}{is\-Empty} () const 
+\begin{DoxyCompactList}\small\item\em is\-Empty \end{DoxyCompactList}\item 
+\hypertarget{classsyntaxTree_a964ca5e61a783f7a58bd5e30293dd674}{void \hyperlink{classsyntaxTree_a964ca5e61a783f7a58bd5e30293dd674}{inorder\-Traversal} () const }\label{classsyntaxTree_a964ca5e61a783f7a58bd5e30293dd674}
+
+\begin{DoxyCompactList}\small\item\em inorder\-Traversal\-:\-Function to do an inorder traversal of the binary tree. \end{DoxyCompactList}\item 
+\hypertarget{classsyntaxTree_ad4af7ee2a407fad774ae2315bb1abf9f}{void \hyperlink{classsyntaxTree_ad4af7ee2a407fad774ae2315bb1abf9f}{preorder\-Traversal} () const }\label{classsyntaxTree_ad4af7ee2a407fad774ae2315bb1abf9f}
+
+\begin{DoxyCompactList}\small\item\em preorder\-Traversal\-:\-Function to do a preorder traversal of the binary tree. \end{DoxyCompactList}\item 
+\hypertarget{classsyntaxTree_afd702f2d1f65f9cf702540deed36f6b2}{void \hyperlink{classsyntaxTree_afd702f2d1f65f9cf702540deed36f6b2}{postorder\-Traversal} () const }\label{classsyntaxTree_afd702f2d1f65f9cf702540deed36f6b2}
+
+\begin{DoxyCompactList}\small\item\em postorder\-Traversal\-:\-Function to do a preorder traversal of the binary tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classsyntaxTree_a670b015b68f6607bb7e3f7fbff3bffb6}{\hyperlink{classnode}{node} $\ast$ {\bfseries root}}\label{classsyntaxTree_a670b015b68f6607bb7e3f7fbff3bffb6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classsyntaxTree_ad12b7769cf5ccb9f1d769a519d1d264d}{\index{syntax\-Tree@{syntax\-Tree}!delete\-Node@{delete\-Node}}
+\index{delete\-Node@{delete\-Node}!syntaxTree@{syntax\-Tree}}
+\subsubsection[{delete\-Node}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf syntax\-Tree\-::delete\-Node} (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{delete\-Item}
+\end{DoxyParamCaption}
+)}}\label{classsyntaxTree_ad12b7769cf5ccb9f1d769a519d1d264d}
+
+
+delete\-Node\-: \-Function to delete delete\-Item from the binary search tree \-Postcondition\-: \-If a node with the same info as delete\-Item is found, it is deleted from the binary search tree. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em delete\-Item} & the item to delete \\
+\hline
+\end{DoxyParams}
+\hypertarget{classsyntaxTree_a96dfc5c8a6e58a037b3a2a540349acd0}{\index{syntax\-Tree@{syntax\-Tree}!destroy\-Tree@{destroy\-Tree}}
+\index{destroy\-Tree@{destroy\-Tree}!syntaxTree@{syntax\-Tree}}
+\subsubsection[{destroy\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf syntax\-Tree\-::destroy\-Tree} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classsyntaxTree_a96dfc5c8a6e58a037b3a2a540349acd0}
+\-Returns true if the binary tree is empty otherwise, returns false. \-Deallocates the memory space occupied by the tree. \-Postcondition\-: root = \-N\-U\-L\-L; \hypertarget{classsyntaxTree_ade062a0bf860a6b217738e4df84a3845}{\index{syntax\-Tree@{syntax\-Tree}!insert@{insert}}
+\index{insert@{insert}!syntaxTree@{syntax\-Tree}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf syntax\-Tree\-::insert} (
+\begin{DoxyParamCaption}
+\item[{const {\bf node} \&}]{item\-To\-Insert}
+\end{DoxyParamCaption}
+)}}\label{classsyntaxTree_ade062a0bf860a6b217738e4df84a3845}
+\-Function to insert insert\-Item in the binary search tree. \-Postcondition\-: \-If no node in the binary search tree has the same info as insert\-Item, a node with the info insert\-Item is created and inserted in the binary search tree. 
+\begin{DoxyParams}{\-Parameters}
+{\em insert\-Item} & the item to insert \\
+\hline
+\end{DoxyParams}
+\hypertarget{classsyntaxTree_a197b8de3714d444fd55bb55ec371bae5}{\index{syntax\-Tree@{syntax\-Tree}!is\-Empty@{is\-Empty}}
+\index{is\-Empty@{is\-Empty}!syntaxTree@{syntax\-Tree}}
+\subsubsection[{is\-Empty}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf syntax\-Tree\-::is\-Empty} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classsyntaxTree_a197b8de3714d444fd55bb55ec371bae5}
+
+
+is\-Empty 
+
+\begin{DoxyReturn}{\-Returns}
+return true if the binary tree is empty, otherwise returns false 
+\end{DoxyReturn}
+\hypertarget{classsyntaxTree_a877596bd5405c307a29a65889e4fbf89}{\index{syntax\-Tree@{syntax\-Tree}!search@{search}}
+\index{search@{search}!syntaxTree@{syntax\-Tree}}
+\subsubsection[{search}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf syntax\-Tree\-::search} (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{search\-Item}
+\end{DoxyParamCaption}
+) const}}\label{classsyntaxTree_a877596bd5405c307a29a65889e4fbf89}
+\-Function to determine if search\-Item is in the tree. \-Postcondition\-: \-Returns true if search\-Item is found in the binary search tree; otherwise, returns false. 
+\begin{DoxyParams}{\-Parameters}
+{\em search\-Item} & the item to search \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+syntaxtree.\-h\item 
+syntaxtree.\-cpp\end{DoxyCompactItemize}
