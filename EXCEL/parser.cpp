@@ -141,7 +141,9 @@ void parser::toBinaryTree(){
 
     syntaxTree tree(outputList);
     tree.buildBinaryTree();
-    //tree.inorderTraversal();
+    cout<<"********************************************************"<<endl;
+    tree.inorderTraversal();
+    cout<<"********************************************************"<<endl;
     //tree.postorderTraversal();
 }
 

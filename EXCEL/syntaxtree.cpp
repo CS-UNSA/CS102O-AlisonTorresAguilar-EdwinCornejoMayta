@@ -9,57 +9,53 @@ void syntaxTree::buildBinaryTree(){
     tokenValue t_value="";
     tokenType  t_type=NONE;
 
-    nodeCell cell;
-    nodeNumber number;
-    nodeOperation operation;
+    nodeCell * cell;
+    nodeNumber * number;
+    nodeOperation * operation;
 
-   int i =0;
+
     while(!outputList.empty()){
         t=outputList.front();//sacar valor
         t_type=t.type;
         t_value=t.value;
 
         switch(t_type){
-        case NUMBER:
-            if(auxStack.top()==NULL)
-                cout<<"is null"<<endl;
-            else
-                cout<<"es raro"<<endl;
-            number.setValue(t_value);
-            auxStack.push(&number);
-            cout<<"number"<<endl;
-            //auxStack.top()->print();
+        case NUMBER:{
+            number =new nodeNumber();
+            number->setValue(t_value);
+            auxStack.push(number);
+            auxStack.top()->print();
+            number++;
             break;
-        case VARIABLE:
-            cell.setValue(t_value);
-            auxStack.push(&cell);
-            cout<<"variable"<<endl;
-
+            }
+        case VARIABLE:{
+            cell = new nodeCell();
+            cell->setValue(t_value);
+            auxStack.push(cell);
             break;
-
-        case OPERATOR:
-
-            auxStack.top()->print();
-            operation.setValue(t_value);
-
-            operation.setLeft(*auxStack.top());
+            }
+        case OPERATOR:{
+            operation = new nodeOperation();
+            operation->setValue(t_value);
+            operation->setLeft(*auxStack.top());
             auxStack.pop();
-            auxStack.top()->print();
-            operation.setRight(*auxStack.top());
+            operation->setRight(*auxStack.top());
             auxStack.pop();
-            cout<<"operation"<<endl;
-            auxStack.push(&operation);
-
+            auxStack.push(operation);
+            operation++;
             break;
-
-        case FUNCTION:
-            auxStack.top()->print();
-            operation.setValue(t_value);
-            operation.setLeft(*auxStack.top());
+            }
+        case FUNCTION:{
+            operation= new nodeOperation();
+            operation->setValue(t_value);
+            operation->setLeft(*auxStack.top());
             auxStack.pop();
-            cout<<"function"<<endl;
-            auxStack.push(&operation);
-            auxStack.top()->print();
+            auxStack.push(operation);
+            operation++;
+            break;
+            }
+        default:
+            cout<<"there is an error"<<endl;
             break;
 
         }
@@ -67,15 +63,6 @@ void syntaxTree::buildBinaryTree(){
     }
 
     root=auxStack.top();
-
-
-
-    cout<<"++++++++++++++++++++++++++++"<<endl;
-    root->print();
-    root->getLeft()->print();
-    root->getRight()->print();
-    //root->getLeft()->getRight()->print();
-    cout<<"++++++++++++++++++++++++++++"<<endl;
 
 }
 
@@ -90,14 +77,12 @@ void syntaxTree::inorder(node *p) const{
         {
             inorder(p->getLeft());
             p->print();
-            cout<<"valor inorder"<<endl;
             inorder(p->getRight());
         }
 }
 void syntaxTree::preorder(node *p) const{
     if (p != NULL)
         {
-            //cout<<p->info<<" ";
             p->print();
             preorder(p->getLeft());
             preorder(p->getRight());
@@ -111,7 +96,6 @@ void syntaxTree::postorder(node *p)const{
             postorder(p->getLeft());
             postorder(p->getRight());
             p->print();
-            //cout << p->info << " ";
         }
 }
 

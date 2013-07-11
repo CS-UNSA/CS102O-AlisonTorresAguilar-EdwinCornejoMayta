@@ -10,6 +10,7 @@ using namespace std;
 class cell
 {
 private:
+
     int         row;
     int         col;
     string      expression;
@@ -17,9 +18,27 @@ private:
     vector<cell> usedBy;
 public:
     cell();
-    void setRow(int);
-    void setCol(int);
+    /**
+     * @brief setRow
+     * @param row
+     */
+    void setRow(int row);
+
+    /**
+     * @brief setCol
+     * @param col
+     */
+    void setCol(int col);
+
+    /**
+     * @brief getRow
+     * @return
+     */
     int getRow();
+    /**
+     * @brief getCol
+     * @return
+     */
     int getCol();
 
 };

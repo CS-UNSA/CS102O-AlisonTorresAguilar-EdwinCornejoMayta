@@ -10,7 +10,7 @@ public:
     nodeNumber();
 
     void print(){
-    cout<<vnumb<<":)"<<endl;
+    cout<<vnumb<<endl;
     }
     void  setValue(string n){
     vnumb=n;
