@@ -5,8 +5,8 @@
 
 excelWindow::excelWindow()
 {
-    //spreadsheet = new Spreadsheet;
-    //setCentralWidget(spreadsheet);
+    spreadsheet = new Spreadsheet();
+    setCentralWidget(spreadsheet);
 
 
     createActions();
