@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7B23E9831717B0DE002700F3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B23E9821717B0DE002700F3 /* main.cpp */; };
 		7B23E9851717B0DE002700F3 /* ExcelParser.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B23E9841717B0DE002700F3 /* ExcelParser.1 */; };
+		7B8BCBD9173BEEDF00801DD2 /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BCBD7173BEEDF00801DD2 /* parser.cpp */; };
+		7B8BCBDC173BEF2900801DD2 /* evaluator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BCBDA173BEF2900801DD2 /* evaluator.cpp */; };
+		7B8BCBDF173C112E00801DD2 /* eval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BCBDD173C112E00801DD2 /* eval.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +31,12 @@
 		7B23E97F1717B0DE002700F3 /* ExcelParser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ExcelParser; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B23E9821717B0DE002700F3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7B23E9841717B0DE002700F3 /* ExcelParser.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ExcelParser.1; sourceTree = "<group>"; };
+		7B8BCBD7173BEEDF00801DD2 /* parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parser.cpp; sourceTree = "<group>"; };
+		7B8BCBD8173BEEDF00801DD2 /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		7B8BCBDA173BEF2900801DD2 /* evaluator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = evaluator.cpp; sourceTree = "<group>"; };
+		7B8BCBDB173BEF2900801DD2 /* evaluator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evaluator.h; sourceTree = "<group>"; };
+		7B8BCBDD173C112E00801DD2 /* eval.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eval.cpp; sourceTree = "<group>"; };
+		7B8BCBDE173C112E00801DD2 /* eval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eval.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +70,13 @@
 			isa = PBXGroup;
 			children = (
 				7B23E9821717B0DE002700F3 /* main.cpp */,
+				7B8BCBDD173C112E00801DD2 /* eval.cpp */,
+				7B8BCBDE173C112E00801DD2 /* eval.h */,
+				7B8BCBD7173BEEDF00801DD2 /* parser.cpp */,
+				7B8BCBD8173BEEDF00801DD2 /* parser.h */,
 				7B23E9841717B0DE002700F3 /* ExcelParser.1 */,
+				7B8BCBDA173BEF2900801DD2 /* evaluator.cpp */,
+				7B8BCBDB173BEF2900801DD2 /* evaluator.h */,
 			);
 			path = ExcelParser;
 			sourceTree = "<group>";
@@ -118,6 +133,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B23E9831717B0DE002700F3 /* main.cpp in Sources */,
+				7B8BCBD9173BEEDF00801DD2 /* parser.cpp in Sources */,
+				7B8BCBDC173BEF2900801DD2 /* evaluator.cpp in Sources */,
+				7B8BCBDF173C112E00801DD2 /* eval.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +232,7 @@
 				7B23E98A1717B0DE002700F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

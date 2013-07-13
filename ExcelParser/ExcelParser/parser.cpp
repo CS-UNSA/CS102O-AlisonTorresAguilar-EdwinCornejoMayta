@@ -120,5 +120,9 @@ void parser::imprimir(){
 		//salida.pop_front();
 	}
     cout<<"----------------------------"<<endl;
-	
-	}
+}
+
+vector<string> parser::getSalida(){
+    return this->salida;
+}
+

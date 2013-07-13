@@ -1,36 +1,109 @@
+
+#include <QtWidgets>
 #include "excelwindow.h"
-#include "ui_excelwindow.h"
-#include "parser.h"
-#include <iostream>
 
 
-excelWindow::excelWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::excelWindow)
+excelWindow::excelWindow()
 {
-    ui->setupUi(this);
-    parser * my=new parser();
-    my->buffer="5+((1+2)*4)-3"; // funciona ok
-    my->buffer="-4*(-5-2)/(-1*x--3)"; // no evalua bien aun dobles signos
-    my->buffer="tag(4.9)+8"; // funciona ok
-   // my->buffer="3+4"; // funciona ok
-    cout<<"----------------------------------------------------"<<endl;
-    my->getTokens();
-    cout<<"----------------------------------------------------"<<endl;
-    my->toPostfix();
-    cout<<"----------------------------------------------------"<<endl;
-    my->toBinaryTree();
-    cout<<"----------------------------------------------------"<<endl;
-   // my->recorrer();
+    //spreadsheet = new Spreadsheet;
+    //setCentralWidget(spreadsheet);
 
 
-    //Esto es una prueba de la funcion para obtener su precedencia de un operador o funcion
-    int p=my->getPrecedingFunction("tag");
-    cout<<p<<" precedencia "<<endl;
+    createActions();
+    createMenus();
+    createContextMenu();
+    createToolBars();
+    createStatusBar();
+
+    setWindowIcon(QIcon(":/images/icon.png"));
+    setCurrentFile("");
 
 }
 
-excelWindow::~excelWindow()
+void excelWindow::closeEvent(QCloseEvent *event)
 {
-    delete ui;
+
+}
+
+void excelWindow::newFile()
+{
+
+}
+
+void excelWindow::open()
+{
+
+}
+
+bool excelWindow::save()
+{
+
+}
+
+bool excelWindow::saveAs()
+{
+}
+
+void excelWindow::about()
+{
+
+}
+
+void excelWindow::updateStatusBar()
+{
+
+}
+
+void excelWindow::spreadsheetModified()
+{
+}
+
+void excelWindow::createActions()
+{
+
+}
+
+void excelWindow::createMenus()
+{
+}
+
+void excelWindow::createContextMenu()
+{
+
+}
+
+void excelWindow::createToolBars()
+{
+
+}
+
+void excelWindow::createStatusBar()
+{
+
+}
+
+bool excelWindow::loadFile(const QString &fileName)
+{
+
+    return true;
+}
+
+bool excelWindow::saveFile(const QString &fileName)
+{
+
+    return true;
+}
+
+void excelWindow::setCurrentFile(const QString &fileName)
+{
+}
+
+void excelWindow::updateRecentFileActions()
+{
+
+}
+
+QString excelWindow::strippedName(const QString &fullFileName)
+{
+    return QFileInfo(fullFileName).fileName();
 }

@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     nodenumber.cpp \
     nodeoperation.cpp \
     syntaxtree.cpp \
-    parser.cpp
+    parser.cpp \
+    spreadsheet.cpp
 
 HEADERS  += excelwindow.h \
     cell.h \
@@ -32,6 +33,7 @@ HEADERS  += excelwindow.h \
     nodenumber.h \
     nodeoperation.h \
     syntaxtree.h \
-    parser.h
+    parser.h \
+    spreadsheet.h
 
-FORMS    += excelwindow.ui
+FORMS    +=

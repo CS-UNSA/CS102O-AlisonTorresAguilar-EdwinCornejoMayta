@@ -1,3 +1,6 @@
+#ifndef __ExcelParser__parser__
+#define __ExcelParser__parser__
+
 #include <iostream>
 #include <fstream>
 #include <stack>
@@ -23,7 +26,9 @@ class parser
 		int esFuncion(string funcion);	
 		void parsear(string);
 		void imprimir();
-	private:
+        vector <string> getSalida();
+	
+    private:
 		string buffer;
 		string bufferAux;
 		stack<string> aux;
@@ -32,4 +37,4 @@ class parser
 	
 };
 
-
+#endif /* defined(__ExcelParser__evaluator__) */
