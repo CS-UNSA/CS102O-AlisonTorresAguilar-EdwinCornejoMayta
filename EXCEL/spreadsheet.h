@@ -1,10 +1,11 @@
 #ifndef SPREADSHEET_H
 #define SPREADSHEET_H
+#include <QTableWidget>
 
-class spreadsheet
+class Spreadsheet : public QTableWidget
 {
 public:
-    spreadsheet();
+    Spreadsheet();
 };
 
 #endif // SPREADSHEET_H
