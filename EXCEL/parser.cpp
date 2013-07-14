@@ -144,7 +144,8 @@ void parser::toBinaryTree(){
     cout<<"********************************************************"<<endl;
     tree.inorderTraversal();
     cout<<"********************************************************"<<endl;
-    //tree.postorderTraversal();
+
+    tree.evaluateTree();
 }
 
 void parser::recorrer(){

@@ -5,19 +5,28 @@
 #include "cell.h"
 class nodeCell: public node
 {
+private:
+    cellv value;
 protected:
     cell *pcell;
-    name  nCell;
+
 public:
     nodeCell();
 
     void print(){
-    cout<<nCell<<endl;
+    cout<<value<<endl;
     }
 
-    void  setValue(name n){
-    nCell=n;
+    void* getValue(){
+        return &value;
     }
+    void setValue(cellv v){
+         value=v;
+     }
+
+     void mymetod(){
+         cout<<"helo"<<endl;
+     }
 };
 
 #endif // NODECELL_H

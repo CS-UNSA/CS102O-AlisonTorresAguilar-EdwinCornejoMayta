@@ -6,13 +6,14 @@
 #include "nodecell.h"
 #include "nodenumber.h"
 #include "nodeoperation.h"
+#include "evaluator.h"
 
 using namespace std;
 class syntaxTree
 {
 protected:
  node *root;
-
+evaluator * eval;
 public:
     /**
      * @brief syntaxTree Empty cosntructor of the class
@@ -80,6 +81,12 @@ public:
        * @brief buildBinaryTree, This function build the new binary tree
        */
       void buildBinaryTree();
+
+      /**
+       * @brief evaluateTree
+       */
+      void evaluateTree();
+
 private:
 
       /**
@@ -100,8 +107,13 @@ private:
        */
       void postorder(node *p) const;
 
+      /**
+       * @brief evaluate
+       * @param p
+       * @return
+       */
+      numv evaluate(node *p)const;
       list<token>  outputList;
-
 
 };
 
