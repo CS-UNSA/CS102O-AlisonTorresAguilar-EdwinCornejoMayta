@@ -3,7 +3,9 @@
 ######################################################################
 
 TEMPLATE = app
+CONFIG   += c++11
 TARGET = spreadsheet
+
 DEPENDPATH += .
 INCLUDEPATH += .
 #CONFIG += c++11
