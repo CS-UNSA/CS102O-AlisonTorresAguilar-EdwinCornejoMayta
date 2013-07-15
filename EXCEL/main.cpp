@@ -14,8 +14,9 @@ int main(int argc, char *argv[])
     my->buffer="5+((1+2)*4)-3"; // funciona ok
     my->buffer="-4*(-5-2)/(-1*x--3)"; // no evalua bien aun dobles signos
     my->buffer="tag(4.9)+8"; // funciona ok
-    my->buffer="7+4"; // funciona ok
+    my->buffer="8%3"; // funciona ok
 
+    cout<<"*****************"<<endl;
     my->getTokens();
     my->toPostfix();
     my->toBinaryTree();

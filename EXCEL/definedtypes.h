@@ -19,7 +19,7 @@ typedef string  nodev;
 typedef string expression;
 typedef int    position;
 
-const string functions =" +0 -0 *1 /1 sin2 cos2 tag2 cot2 sum2 ";
+const string functions =" +0 -0 *1 /1 %1 sin2 cos2 tan2 ctg2 sec2 csc2 abs2 ";
 
 enum tokenType{ NUMBER, VARIABLE, LPARENTHESIS, RPARENTHESIS, OPERATOR, FUNCTION, NONE};
 

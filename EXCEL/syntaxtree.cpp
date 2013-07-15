@@ -44,9 +44,9 @@ void syntaxTree::buildBinaryTree(){
         case OPERATOR:{
             operation = new nodeOperation();
             operation->setValue(t_value);
-            operation->setLeft(*auxStack.top());
-            auxStack.pop();
             operation->setRight(*auxStack.top());
+            auxStack.pop();
+            operation->setLeft(*auxStack.top());
             auxStack.pop();
             auxStack.push(operation);
             operation++;
