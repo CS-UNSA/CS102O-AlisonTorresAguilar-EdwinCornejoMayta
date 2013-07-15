@@ -3,5 +3,3 @@
 nodeCell::nodeCell()
 {
 }
-
-//void nodeCell::print(){}

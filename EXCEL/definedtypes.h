@@ -1,14 +1,20 @@
 #ifndef DEFINEDTYPES_H
 #define DEFINEDTYPES_H
 
-#include "string"
+#include <string>
 #include <map>
 #include <stack>
 #include <list>
+#include <sstream>
+#include <math.h>
+
 using namespace std;
 
 typedef string tokenValue;
-typedef double numb;
+typedef double numv;
+typedef string  cellv;
+typedef string  oprv;
+typedef string  nodev;
 
 typedef string name;
 
@@ -20,5 +26,8 @@ struct token{
     string value;
     tokenType type;
 };
+
+
+
 
 #endif // DEFINEDTYPES_H

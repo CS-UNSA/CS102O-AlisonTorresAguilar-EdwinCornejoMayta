@@ -52,9 +52,7 @@ void parser::getTokens(){
         t.value=t_value;
         t.type =t_type;
         tokenList.push_back(t);
-        cout<<"t_value "<<t_value<<" t_type "<<t_type<<endl;
         t_value="";
-
 
     }
 
@@ -64,9 +62,8 @@ void parser::getTokens(){
 int parser::getPrecedingFunction(string fun){
  return  functions[functions.find(fun)+fun.size()];
 }
+
 void parser::toPostfix(){
-    //list<token>  outputList;
-    //stack<token> outputStack;
     token t;
     tokenValue t_value="";
     tokenType  t_type=NONE;
@@ -74,12 +71,12 @@ void parser::toPostfix(){
     token stk; // temporal variable of type token
 
     while (!tokenList.empty()){
-        t=tokenList.front();//sacar valor
+        t=tokenList.front();
         t_type=t.type;
         t_value=t.value;
-        //cout<<t_type<<"el tipooooooo"<<endl;
 
         switch (t_type){
+
         case NUMBER:
         case VARIABLE:
             outputList.push_back(t);
@@ -122,31 +119,12 @@ void parser::toPostfix(){
           outputStack.pop();
     }
 
-    //delete outputStack;
-
-    //-----------------------------------------------------------
-    //Print postfix
-        list<token>::iterator it;
-
-        for(it=outputList.begin();it!=outputList.end();it++){
-            token temp= (*it);
-            cout<<" li "<<temp.value<<endl;
-        }
-
-
-    //-----------------------------------------------------------
-
 }// end of function
-void parser::toBinaryTree(){
 
+void parser::toBinaryTree(){
     syntaxTree tree(outputList);
     tree.buildBinaryTree();
-    cout<<"********************************************************"<<endl;
-    tree.inorderTraversal();
-    cout<<"********************************************************"<<endl;
-    //tree.postorderTraversal();
+    //tree.inorderTraversal();
+    tree.evaluateTree();
 }
 
-void parser::recorrer(){
-
-}

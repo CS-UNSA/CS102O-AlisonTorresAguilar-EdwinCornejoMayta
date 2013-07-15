@@ -3,21 +3,30 @@
 
 #include "node.h"
 #include "cell.h"
+
 class nodeCell: public node
 {
+private:
+    cellv value;
 protected:
     cell *pcell;
-    name  nCell;
+
 public:
     nodeCell();
 
-    void print(){
-    cout<<nCell<<endl;
+    inline void print(){
+   cout<<value<<endl;
     }
 
-    void  setValue(name n){
-    nCell=n;
+    inline void* getValue(){
+        return &value;
     }
+
+    inline void setValue(cellv v){
+         value=v;
+     }
+
+
 };
 
 #endif // NODECELL_H

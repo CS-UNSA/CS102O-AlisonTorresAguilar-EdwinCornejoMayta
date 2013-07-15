@@ -30,14 +30,13 @@ public:
     //to Binary tree
     node *root;
 
-
     void getTokens();
     void toPostfix();
     inline  void setBuffer(string b){buffer=b;}
     inline  string getBuffer() {return buffer;}
     int getPrecedingFunction(string fun);
     void toBinaryTree();
-    void recorrer();
+
 };
 
 #endif // PARSER_H
