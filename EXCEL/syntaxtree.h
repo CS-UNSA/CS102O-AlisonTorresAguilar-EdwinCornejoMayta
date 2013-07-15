@@ -7,6 +7,7 @@
 #include "nodenumber.h"
 #include "nodeoperation.h"
 #include "evaluator.h"
+#include "definedtypes.h"
 
 using namespace std;
 class syntaxTree
@@ -85,8 +86,10 @@ public:
       /**
        * @brief evaluateTree
        */
-      void evaluateTree();
+      numv evaluateTree();
 
+
+      void  built(string expression);
 private:
 
       /**

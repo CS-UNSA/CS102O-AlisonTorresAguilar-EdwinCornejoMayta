@@ -1,5 +1,12 @@
 #include "syntaxtree.h"
-
+#include "parser.h"
+void syntaxTree::built(string expression){
+    parser parseTree;
+    parseTree.getTokens();
+    parseTree.toPostfix();
+    outputList=parseTree.getOutputList();
+    buildBinaryTree();
+}
 void syntaxTree::buildBinaryTree(){
    eval =new evaluator();
     stack<node*> auxStack;
@@ -119,6 +126,6 @@ void syntaxTree::postorderTraversal() const{
     postorder(root);
 }
 
-void syntaxTree::evaluateTree() {
-    cout<<"Resultado: "<<evaluate(root)<<endl;
+numv syntaxTree::evaluateTree() {
+    return evaluate(root);
 }

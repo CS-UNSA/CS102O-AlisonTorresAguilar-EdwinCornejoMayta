@@ -38,7 +38,6 @@ SOURCES += uicell.cpp \
     node.cpp \
     matrix.cpp \
     cell.cpp \
-    calctree.cpp \
     evaluator.cpp
 RESOURCES += uispreadsheet.qrc
 

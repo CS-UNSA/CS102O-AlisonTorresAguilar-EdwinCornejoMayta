@@ -1,10 +1,10 @@
 #ifndef CELL_H
 #define CELL_H
-
-#include "definedtypes.h"
-#include "node.h"
 #include <string>
 #include <vector>
+#include "definedtypes.h"
+//#include "syntaxtree.h"
+
 using namespace std;
 
 class cell
@@ -14,7 +14,7 @@ private:
     int         row;
     int         col;
     string      expression;
-    node        *value;
+   // syntaxTree   *tree;
     vector<cell> usedBy;
 public:
     cell();
@@ -40,6 +40,12 @@ public:
      * @return
      */
     int getCol();
+
+    void setExpression(string e);
+
+    string getExpression();
+
+
 
 };
 #endif // CELL_H
