@@ -4,7 +4,6 @@
 
 TEMPLATE = app
 CONFIG   += c++11
-#//CONFIG   += c++11
 TARGET = spreadsheet
 
 DEPENDPATH += .

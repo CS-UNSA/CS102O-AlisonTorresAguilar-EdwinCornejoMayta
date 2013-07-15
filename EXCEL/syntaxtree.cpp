@@ -1,7 +1,8 @@
 #include "syntaxtree.h"
 
+
 void syntaxTree::buildBinaryTree(){
-   eval =new evaluator();
+
     stack<node*> auxStack;
 
     token t;
@@ -28,10 +29,8 @@ void syntaxTree::buildBinaryTree(){
             break;
             }
         case VARIABLE:{
-
             cell = new nodeCell();
             cell->setValue(t_value);
-
             auxStack.push(cell);
             break;
             }
@@ -72,6 +71,7 @@ void syntaxTree::insert(const node& itemToInsert){
 
 }
 
+
 void syntaxTree::inorder(node *p) const{
     if (p != NULL)
         {
@@ -99,17 +99,6 @@ void syntaxTree::postorder(node *p)const{
         }
 }
 
-numv syntaxTree::evaluate(node *p)const{
-
-    if(p->isLeaft())
-        return *(numv*)p->getValue();
-    else if(p->isUnary())
-        return   eval->evaluar(evaluate(p->getLeft()),*(oprv*)p->getValue());
-        //return  3;
-    else if (p->isBinary())
-        return eval->evaluar(evaluate(p->getLeft()), evaluate(p->getRight()),*(oprv*)p->getValue());
-        //return  8;
-}
 
 void syntaxTree::inorderTraversal() const{
     inorder(root);
@@ -121,8 +110,4 @@ void syntaxTree::preorderTraversal() const{
 
 void syntaxTree::postorderTraversal() const{
     postorder(root);
-}
-
-void syntaxTree::evaluateTree() {
-    cout<<"evaluando"<<evaluate(root)<<endl;
 }

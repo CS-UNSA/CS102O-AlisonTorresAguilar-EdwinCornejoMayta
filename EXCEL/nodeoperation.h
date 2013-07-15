@@ -3,8 +3,6 @@
 #include "node.h"
 class nodeOperation :public node
 {
- private:
-    oprv value;
 protected:
     string nOperation;
 
@@ -12,15 +10,12 @@ public:
     nodeOperation();
 
     void print(){
-    cout<<value<<endl;
+    cout<<nOperation<<endl;
     }
 
-    void*getValue(){
-    return &value;
+    void  setValue(name o){
+    nOperation=o;
     }
-     void setValue(oprv v){
-         value=v;
-     }
 };
 
 #endif // NODEOPERATION_H
