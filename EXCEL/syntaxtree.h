@@ -8,18 +8,22 @@
 #include "nodeoperation.h"
 #include "evaluator.h"
 #include "definedtypes.h"
+#include "spreadsheet.h"
 
 using namespace std;
 class syntaxTree
 {
 protected:
- node *root;
-evaluator * eval;
+     node *root;
+    evaluator * eval;
+    spreadSheet *ssp;
 public:
     /**
      * @brief syntaxTree Empty cosntructor of the class
      */
-    syntaxTree():root(NULL){}
+
+    syntaxTree(spreadSheet *p):ssp(p){}
+    syntaxTree():root(nullptr){}
 
     /**
      * @brief syntaxTree cosntructor of the class
@@ -88,8 +92,8 @@ public:
        */
       numv evaluateTree();
 
-
       void  built(string expression);
+
 private:
 
       /**

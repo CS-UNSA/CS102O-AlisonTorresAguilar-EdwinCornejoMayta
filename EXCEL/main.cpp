@@ -2,6 +2,7 @@
 #include <iostream>
 #include "parser.h"
 #include "uimainwindow.h"
+//#include "matrix.h"
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +17,8 @@ int main(int argc, char *argv[])
     my->buffer="tag(4.9)+8"; // funciona ok
     my->buffer="8%3"; // funciona ok
 
+//    excel =new matrix();
+
     cout<<"*****************"<<endl;
     my->getTokens();
     my->toPostfix();
@@ -23,8 +26,9 @@ int main(int argc, char *argv[])
 
 
 
-    QApplication app(argc, argv);
+/*    QApplication app(argc, argv);
     UIMainWindow mainWin;
     mainWin.show();
-    return app.exec();
+    return app.exec();*/
+    return 0;
 }

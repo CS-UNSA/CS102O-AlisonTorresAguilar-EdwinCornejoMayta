@@ -3,21 +3,28 @@
 #include <string>
 #include <vector>
 #include "definedtypes.h"
-//#include "syntaxtree.h"
+//#include "spreadsheet.h"
 
 using namespace std;
 
+class syntaxTree;
+class spreadSheet;
 class cell
 {
 private:
 
     int         row;
     int         col;
-    string      expression;
-   // syntaxTree   *tree;
-    vector<cell> usedBy;
+    string      expression;//formula
+    syntaxTree   *tree;
+    vector<cell*> usedBy;
+    numv             value;
+    spreadSheet  *ssp;
+
 public:
-    cell();
+    cell(){}
+    cell(spreadSheet*p ):ssp(p){}
+
     /**
      * @brief setRow
      * @param row
@@ -40,12 +47,21 @@ public:
      * @return
      */
     int getCol();
-
+    /**
+     * @brief setExpression
+     * @param e
+     */
     void setExpression(string e);
 
     string getExpression();
 
+    numv getResult(){
+        //value = evaluarsintayxtree
+        return value;
+    }
 
+    void addUsedBy(cell * p);
 
+    //cell* returnThis()
 };
 #endif // CELL_H

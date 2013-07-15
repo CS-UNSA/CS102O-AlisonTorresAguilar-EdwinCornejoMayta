@@ -1,5 +1,6 @@
 #include "syntaxtree.h"
 #include "parser.h"
+
 void syntaxTree::built(string expression){
     parser parseTree;
     parseTree.getTokens();
@@ -37,8 +38,11 @@ void syntaxTree::buildBinaryTree(){
 
             cell = new nodeCell();
             cell->setValue(t_value);
-
+            cell->pcell=ssp->getCell(cell->getRow(),cell->getCol());
+            cell->setnValue(cell->pcell->getResult());
+            //cell->setPcell(ssp->getCell(cell->getRow(),cell->getCol()));
             auxStack.push(cell);
+
             break;
             }
         case OPERATOR:{
@@ -108,10 +112,10 @@ numv syntaxTree::evaluate(node *p)const{
         return *(numv*)p->getValue();
     else if(p->isUnary())
         return   eval->evaluar(evaluate(p->getLeft()),*(oprv*)p->getValue());
-        //return  3;
+
     else if (p->isBinary())
         return eval->evaluar(evaluate(p->getLeft()), evaluate(p->getRight()),*(oprv*)p->getValue());
-        //return  8;
+
 }
 
 void syntaxTree::inorderTraversal() const{

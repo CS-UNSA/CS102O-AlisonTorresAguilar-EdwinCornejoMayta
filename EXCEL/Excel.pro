@@ -21,10 +21,10 @@ HEADERS += uicell.h \
     nodenumber.h \
     nodecell.h \
     node.h \
-    matrix.h \
     definedtypes.h \
     cell.h \
-    evaluator.h
+    evaluator.h \
+    spreadsheet.h
 FORMS +=
 SOURCES += uicell.cpp \
            main.cpp \
@@ -36,9 +36,9 @@ SOURCES += uicell.cpp \
     nodenumber.cpp \
     nodecell.cpp \
     node.cpp \
-    matrix.cpp \
     cell.cpp \
-    evaluator.cpp
+    evaluator.cpp \
+    spreadsheet.cpp
 RESOURCES += uispreadsheet.qrc
 
 OTHER_FILES +=

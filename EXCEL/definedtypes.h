@@ -28,7 +28,4 @@ struct token{
     tokenType type;
 };
 
-
-
-
 #endif // DEFINEDTYPES_H

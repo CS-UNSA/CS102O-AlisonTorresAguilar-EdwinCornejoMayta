@@ -12,11 +12,11 @@ private:
     vector< vector<cell > > matrix;
     int currentRow,currentCol;
     int height,width;
+
+
 public:
-    /**
-     * @brief matrix
-     */
-   spreadSheet():height(0),width(0){}
+
+    spreadSheet():height(0),width(0){}
 
     spreadSheet(int h,int w):height(h),width(w){}
 
@@ -87,4 +87,4 @@ public:
     cell* getCell(int r,int c){ return &matrix[r][c];}
 };
 
-#endif // MATRIX_H
+#endif // SPREADSHEET_H

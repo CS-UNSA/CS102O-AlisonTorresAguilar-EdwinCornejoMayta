@@ -1,5 +1,11 @@
 #include "cell.h"
 
-cell::cell()
-{
+void cell::setExpression(string e){
+}
+
+string cell::getExpression(){}
+
+
+void cell::addUsedBy(cell * p){
+    usedBy.push_back(p);
 }

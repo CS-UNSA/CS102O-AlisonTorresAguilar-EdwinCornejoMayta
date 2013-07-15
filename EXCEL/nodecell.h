@@ -2,16 +2,20 @@
 #define NODECELL_H
 
 #include "node.h"
-#include "cell.h"
+//#include "cell.h"
 //:)
+
+class cell;
 class nodeCell: public node
 {
-private:
+public:
+    //private:
     cellv value;
-protected:
+    numv nvalue;
+//protected:
     cell *pcell;
 
-public:
+
     nodeCell();
 
     inline void print(){
@@ -19,13 +23,28 @@ public:
     }
 
     inline void* getValue(){
+
+       // return &pcell->gelResult();
         return &value;
     }
 
+    void setPcell(cell * p){
+        pcell=p;
+    }
     inline void setValue(cellv v){
          value=v;
      }
 
+    inline void setnValue(numv v){
+         nvalue=v;
+     }
+    int getRow(){
+        return value[0]-'A';
+
+    }
+    int getCol(){
+        return value[1]-'0';
+    }
 
 };
 
