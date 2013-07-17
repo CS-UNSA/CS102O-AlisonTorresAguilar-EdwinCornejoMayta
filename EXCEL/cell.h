@@ -8,18 +8,19 @@
 
 using namespace std;
 
+class matrix;
 class syntaxTree;
 class cell
 {
 
 private:
-    int         row;
-    int         col;
-    string      expression;
-    syntaxTree  *tree;
+    int           row;
+    int           col;
+    string        expression;
+    syntaxTree    *tree;
     vector<cell*> usedBy;
-    numv         value;
-
+    numv          value;
+    matrix        *currentMatrix;
 public:
     cell();
     cell(int r,int c):row(r),col(c){}
@@ -31,6 +32,7 @@ public:
     inline numv getValue(){return value;}
     inline string getExpression(){return expression;}
     void setExpression(string e);
+    void setCurrentSS(matrix *m);
     void print ();
     void addUsedBy(cell* p);
 

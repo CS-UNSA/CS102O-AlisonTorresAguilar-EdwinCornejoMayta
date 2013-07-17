@@ -11,11 +11,13 @@
 #include "parser.h"
 
 using namespace std;
+class matrix;
+class cell;
 class syntaxTree
 {
 protected:
- node *root;
-evaluator * eval;
+    node *root;
+    evaluator * eval;
 public:
 
     syntaxTree():root(NULL){}
@@ -31,7 +33,8 @@ public:
     void buildBinaryTree();
     numv evaluateTree();
     node*  built(string expression);
-
+    void setCurrentSS(matrix *m);
+    void setCurrentC(cell *c);
 
 private:
       void inorder(node *p) const;
@@ -40,7 +43,8 @@ private:
       numv evaluate(node *p)const;
 
       list<token>  outputList;
-
+      matrix   *currentMatrix;
+      cell     *currentCell;
 };
 
 #endif // SYNTAXTREE_H

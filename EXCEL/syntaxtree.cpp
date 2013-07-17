@@ -1,4 +1,6 @@
 #include "syntaxtree.h"
+#include "cell.h"
+#include "matrix.h"
 
 node* syntaxTree::built(string expression){
     parser parseTree(expression);
@@ -37,11 +39,11 @@ void syntaxTree::buildBinaryTree(){
             break;
             }
         case VARIABLE:{
-
             cell = new nodeCell();
             cell->setValue(t_value);
-
+            cell->setMatrix(currentMatrix);
             auxStack.push(cell);
+
             break;
             }
         case OPERATOR:{
@@ -131,4 +133,11 @@ void syntaxTree::postorderTraversal() const{
 
 numv syntaxTree::evaluateTree() {
     return evaluate(root);
+}
+
+void syntaxTree::setCurrentSS(matrix *m){
+    currentMatrix=m;
+}
+void syntaxTree::setCurrentC(cell*c){
+    currentCell=c;
 }

@@ -26,11 +26,16 @@ int main()
     //tree.built("5+3");
 
     matrix excel (100,100);
-
     excel.insertCell(0,0,"(5+4)/3");
-    excel.insertCell(0,1,"(36-6)/4");
+    excel.insertCell(0,1,"A1+7");
+    excel.insertCell(0,2,"A2+3");
+    cout<<"dir"<<excel.getCell(0,0)<<endl;
+    cout<<"dir"<<excel.getCell(0,1)<<endl;
+    cout<<"dir"<<excel.getCell(0,2)<<endl;
     cout<<excel.getCell(0,0)->getValue()<<endl;
     cout<<excel.getCell(0,1)->getValue()<<endl;
+    cout<<excel.getCell(0,2)->getValue()<<endl;
+
 
 
     //syntaxTree tree;
