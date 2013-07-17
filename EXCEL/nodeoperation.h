@@ -10,17 +10,9 @@ protected:
 
 public:
     nodeOperation();
-
-    void print(){
-    cout<<value<<endl;
-    }
-
-    void*getValue(){
-    return &value;
-    }
-     void setValue(oprv v){
-         value=v;
-     }
+    void print();
+    void*getValue();
+    void setValue(oprv v);
 };
 
 #endif // NODEOPERATION_H

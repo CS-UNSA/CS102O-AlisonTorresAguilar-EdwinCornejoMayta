@@ -13,12 +13,9 @@ public:
     node():leftchild(NULL),rightchild(NULL){}
     node(node*l,node*r):leftchild(l),rightchild(r){}
 
-
-    //virtual value setValue();
-
     virtual void print()=0;
-    virtual void*getValue(){}
-    virtual void setValue(nodev v){}
+    virtual void*getValue()=0;
+    virtual void setValue(nodev)=0;
 
     inline void setLeft (node &l){leftchild=&l;}
     inline void setRight(node &r){rightchild=&r;}

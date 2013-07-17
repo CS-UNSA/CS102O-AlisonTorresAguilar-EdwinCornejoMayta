@@ -24,7 +24,8 @@ HEADERS += uicell.h \
     matrix.h \
     definedtypes.h \
     cell.h \
-    evaluator.h
+    evaluator.h \
+    spreadsheet.h
 FORMS +=
 SOURCES += uicell.cpp \
            main.cpp \
@@ -38,7 +39,8 @@ SOURCES += uicell.cpp \
     node.cpp \
     matrix.cpp \
     cell.cpp \
-    evaluator.cpp
+    evaluator.cpp \
+    spreadsheet.cpp
 RESOURCES += uispreadsheet.qrc
 
 OTHER_FILES +=

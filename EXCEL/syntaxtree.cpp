@@ -1,11 +1,14 @@
 #include "syntaxtree.h"
-#include "parser.h"
-void syntaxTree::built(string expression){
-    parser parseTree;
+
+node* syntaxTree::built(string expression){
+    parser parseTree(expression);
+
+    parseTree.setBuffer(expression);
     parseTree.getTokens();
     parseTree.toPostfix();
-    outputList=parseTree.getOutputList();
+    outputList=*parseTree.getOutputList();
     buildBinaryTree();
+    return root;
 }
 void syntaxTree::buildBinaryTree(){
    eval =new evaluator();
@@ -108,10 +111,10 @@ numv syntaxTree::evaluate(node *p)const{
         return *(numv*)p->getValue();
     else if(p->isUnary())
         return   eval->evaluar(evaluate(p->getLeft()),*(oprv*)p->getValue());
-        //return  3;
+
     else if (p->isBinary())
         return eval->evaluar(evaluate(p->getLeft()), evaluate(p->getRight()),*(oprv*)p->getValue());
-        //return  8;
+
 }
 
 void syntaxTree::inorderTraversal() const{

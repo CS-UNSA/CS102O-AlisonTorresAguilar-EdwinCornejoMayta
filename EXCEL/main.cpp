@@ -1,30 +1,47 @@
 #include <QApplication>
 #include <iostream>
-#include "parser.h"
+//#include "parser.h"
 #include "uimainwindow.h"
+#include "cell.h"
+#include "matrix.h"
+#include "syntaxtree.h"
 
-int main(int argc, char *argv[])
+int main()
 {
 
-    int my_array[5] = {1, 2, 3, 4, 5};
-    for (auto x : my_array)
-        std::cout << x << std::endl;
 
+    /*
     parser * my=new parser();
     my->buffer="5+((1+2)*4)-3"; // funciona ok
     my->buffer="-4*(-5-2)/(-1*x--3)"; // no evalua bien aun dobles signos
     my->buffer="tag(4.9)+8"; // funciona ok
     my->buffer="8%3"; // funciona ok
 
-    cout<<"*****************"<<endl;
     my->getTokens();
     my->toPostfix();
     my->toBinaryTree();
+    */
+
+    //syntaxTree tree;
+    //tree.built("5+3");
+
+    matrix excel (100,100);
+
+    excel.insertCell(0,0,"(5+4)/3");
+    excel.insertCell(0,1,"(36-6)/4");
+    cout<<excel.getCell(0,0)->getValue()<<endl;
+    cout<<excel.getCell(0,1)->getValue()<<endl;
 
 
+    //syntaxTree tree;
+    //tree.built("5+9");
+    //cout<<"Resultado="<<tree.evaluateTree()<<endl;
 
+
+    /*
     QApplication app(argc, argv);
     UIMainWindow mainWin;
     mainWin.show();
     return app.exec();
+    */
 }

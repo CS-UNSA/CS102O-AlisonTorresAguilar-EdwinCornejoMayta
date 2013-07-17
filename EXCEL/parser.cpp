@@ -121,11 +121,5 @@ void parser::toPostfix(){
 
 }// end of function
 
-void parser::toBinaryTree(){
-    syntaxTree tree(outputList);
-    tree.buildBinaryTree();
-    tree.inorderTraversal();
-    cout<<"Resultado:"<<tree.evaluateTree()<<endl;
 
-}
 
