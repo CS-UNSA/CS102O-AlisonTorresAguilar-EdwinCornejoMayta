@@ -11,6 +11,7 @@ cell::cell(){
      expression=e;
      tree->built(expression);
      value=tree->evaluateTree();
+     update();
  }
 
 
@@ -24,4 +25,16 @@ void cell::addUsedBy(cell* p){
 
 void cell::setCurrentSS(matrix *m){
     currentMatrix=m;
+}
+
+void cell::evaluate(){
+    value=tree->evaluateTree();
+}
+void cell::update(){
+    vector<cell*>::iterator it;
+    for(it=usedBy.begin();it!=usedBy.end();it++){
+       (*it)->evaluate();
+       (*it)->update();
+    }
+
 }

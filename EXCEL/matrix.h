@@ -30,7 +30,9 @@ public:
     void addCol();
     void resize(int w,int h);
     void insertCell(int r,int c,string expression);
+    void updateCell(int r,int c,string expression);
     cell* getCell(int r,int c);
+
 };
 
 #endif // MATRIX_H

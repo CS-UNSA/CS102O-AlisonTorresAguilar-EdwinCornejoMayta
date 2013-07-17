@@ -7,10 +7,13 @@
  }
 
  void matrix::insertCell(int r,int c,string expression){
-     cell newCell(r,c);
-     newCell.setCurrentSS(this);
-     newCell.setExpression(expression);
-     spreadSheet[r][c]=newCell;
+     spreadSheet[r][c].setCurrentSS(this);
+     spreadSheet[r][c].setExpression(expression);
+
+ }
+
+ void matrix::updateCell(int r,int c,string expression){
+     spreadSheet[r][c].setExpression(expression);
  }
 
  cell* matrix::getCell(int r,int c){

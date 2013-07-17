@@ -16,7 +16,7 @@ evaluator::evaluator(){
     function["csc"]=&evaluator::abs_;
 }
 
- double evaluator::add( double a, double b){
+ double evaluator::add(numv a,numv b){
     return (a+b);
     }
 

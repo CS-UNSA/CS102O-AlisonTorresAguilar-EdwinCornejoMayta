@@ -35,6 +35,7 @@ public:
     void setCurrentSS(matrix *m);
     void print ();
     void addUsedBy(cell* p);
-
+    void update();
+    void evaluate();
 };
 #endif // CELL_H

@@ -42,8 +42,8 @@ void syntaxTree::buildBinaryTree(){
             cell = new nodeCell();
             cell->setValue(t_value);
             cell->setMatrix(currentMatrix);
+            cell->addUsedBy(currentCell);
             auxStack.push(cell);
-
             break;
             }
         case OPERATOR:{
