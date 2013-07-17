@@ -27,5 +27,4 @@ public:
 
 
 };
-
 #endif // NODE_H

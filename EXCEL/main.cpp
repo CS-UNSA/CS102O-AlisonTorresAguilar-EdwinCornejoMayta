@@ -2,9 +2,13 @@
 #include <iostream>
 //#include "parser.h"
 #include "uimainwindow.h"
+<<<<<<< HEAD
 #include "cell.h"
 #include "matrix.h"
 #include "syntaxtree.h"
+=======
+//#include "matrix.h"
+>>>>>>> 3c4e6badd4550db674e5bdf7ab536d749d3c2cb7
 
 int main()
 {
@@ -17,6 +21,12 @@ int main()
     my->buffer="tag(4.9)+8"; // funciona ok
     my->buffer="8%3"; // funciona ok
 
+<<<<<<< HEAD
+=======
+//    excel =new matrix();
+
+    cout<<"*****************"<<endl;
+>>>>>>> 3c4e6badd4550db674e5bdf7ab536d749d3c2cb7
     my->getTokens();
     my->toPostfix();
     my->toBinaryTree();
@@ -27,6 +37,7 @@ int main()
 
     matrix excel (100,100);
 
+<<<<<<< HEAD
     excel.insertCell(0,0,"(5+4)/3");
     excel.insertCell(0,1,"(36-6)/4");
     cout<<excel.getCell(0,0)->getValue()<<endl;
@@ -44,4 +55,11 @@ int main()
     mainWin.show();
     return app.exec();
     */
+=======
+/*    QApplication app(argc, argv);
+    UIMainWindow mainWin;
+    mainWin.show();
+    return app.exec();*/
+    return 0;
+>>>>>>> 3c4e6badd4550db674e5bdf7ab536d749d3c2cb7
 }
