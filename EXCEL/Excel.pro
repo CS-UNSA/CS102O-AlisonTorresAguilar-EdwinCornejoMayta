@@ -21,6 +21,7 @@ HEADERS += uicell.h \
     nodenumber.h \
     nodecell.h \
     node.h \
+    matrix.h \
     definedtypes.h \
     cell.h \
     evaluator.h \
@@ -36,6 +37,7 @@ SOURCES += uicell.cpp \
     nodenumber.cpp \
     nodecell.cpp \
     node.cpp \
+    matrix.cpp \
     cell.cpp \
     evaluator.cpp \
     spreadsheet.cpp

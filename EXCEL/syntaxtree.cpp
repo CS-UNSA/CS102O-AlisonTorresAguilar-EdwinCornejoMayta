@@ -1,16 +1,9 @@
 #include "syntaxtree.h"
-<<<<<<< HEAD
 
 node* syntaxTree::built(string expression){
     parser parseTree(expression);
 
     parseTree.setBuffer(expression);
-=======
-#include "parser.h"
-
-void syntaxTree::built(string expression){
-    parser parseTree;
->>>>>>> 3c4e6badd4550db674e5bdf7ab536d749d3c2cb7
     parseTree.getTokens();
     parseTree.toPostfix();
     outputList=*parseTree.getOutputList();
@@ -47,11 +40,8 @@ void syntaxTree::buildBinaryTree(){
 
             cell = new nodeCell();
             cell->setValue(t_value);
-            cell->pcell=ssp->getCell(cell->getRow(),cell->getCol());
-            cell->setnValue(cell->pcell->getResult());
-            //cell->setPcell(ssp->getCell(cell->getRow(),cell->getCol()));
-            auxStack.push(cell);
 
+            auxStack.push(cell);
             break;
             }
         case OPERATOR:{

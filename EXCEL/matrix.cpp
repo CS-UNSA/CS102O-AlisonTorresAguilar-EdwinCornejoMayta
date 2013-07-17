@@ -1,11 +1,7 @@
 #include "matrix.h"
 
  void matrix::resize(int w,int h){
-<<<<<<< HEAD
 
-=======
-  spreadSheet.resize( w,vector<cell>(h));
->>>>>>> 3c4e6badd4550db674e5bdf7ab536d749d3c2cb7
   this->setWidth(w);
   this->setHeight(h);
  }
