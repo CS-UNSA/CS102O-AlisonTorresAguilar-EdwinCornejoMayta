@@ -1,6 +1,8 @@
 SOURCES += \
     main.cpp \
-    gui.cpp
+    gui.cpp \
+    uispreadsheet.cpp
 
 HEADERS += \
-    gui.h
+    gui.h \
+    uispreadsheet.h

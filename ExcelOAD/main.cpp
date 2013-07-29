@@ -1,4 +1,4 @@
-#include <QtGui/QApplication>
+#include <QAp
 #include "gui.h"
 
 int main(int argc, char** argv) {

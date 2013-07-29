@@ -11,10 +11,8 @@ UISpreadsheet::UISpreadsheet(QWidget *parent) :
     connect(this, SIGNAL(currentItemChanged(QTableWidgetItem*,QTableWidgetItem*)),
                 this, SLOT(updateStatus(QTableWidgetItem*)));
 
-
     connect(this, SIGNAL(itemChanged(QTableWidgetItem *)),
             this, SLOT(somethingChanged()));
- //   row(const QTableWidgetItem * item);
     clear();
 }
 
@@ -41,9 +39,9 @@ void UISpreadsheet::somethingChanged(){
 
     cout<<"("<<currentColumn()<<","<<currentRow()<<")"<<endl;
     mat->insertCell(currentColumn(),currentRow(),currentItem()->text().toStdString());
-//    mat->insertCell(currentColumn(),currentRow(),currentItem()->data(Qt::EditRole).toString().toStdString());
-    cout<<mat->getCell(currentColumn(),currentRow())->getValue()<<endl;
-    cout<<mat->getCell(currentColumn(),currentRow())->getExpression()<<endl;
+    //mat->insertCell(currentColumn(),currentRow(),currentItem()->data(Qt::EditRole).toString().toStdString());
+    cout<<"* "<<mat->getCell(currentColumn(),currentRow())->getValue()<<endl;
+    cout<<"* "<<mat->getCell(currentColumn(),currentRow())->getExpression()<<endl;
 
 
     QString item1= QString::number(mat->getCell(currentRow(),currentColumn())->getValue());
@@ -53,17 +51,17 @@ void UISpreadsheet::somethingChanged(){
     //table->adjustSize();
     //spreadsheet->resize(640,440);
 
-  //  recalculate();
-//    viewport()->update();
-//    emit modified();
+    recalculate();
+    viewport()->update();
+    emit modified();
 
 }
 
 void UISpreadsheet::updateStatus(QTableWidgetItem *item)
 {
-  //  if (item && item == this->currentItem()) {
-        //statusBar()->showMessage(item->data(Qt::StatusTipRole).toString(), 1000);
-        //cellLabel->setText(tr("Cell: (%1)").arg(encode_pos(table->row(item), table->column(item))));
-    //    cellLabel->setText(tr("Cell: (%1)").arg(encode_pos(this->row(item), this->column(item))));
-   // }
+   if (item && item == this->currentItem()) {
+        statusBar()->showMessage(item->data(Qt::StatusTipRole).toString(), 1000);
+        cellLabel->setText(tr("Cell: (%1)").arg(encode_pos(table->row(item), table->column(item))));
+        cellLabel->setText(tr("Cell: (%1)").arg(encode_pos(this->row(item), this->column(item))));
+    }
 }
