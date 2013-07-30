@@ -12,8 +12,8 @@ private:
     cellv value;
     cell *pcell;
     matrix *currentMatrix;
-    int row;
-    int col;
+    typeRow  row;
+    typeCol  col;
     void getRowCol();
 public:
     nodeCell();

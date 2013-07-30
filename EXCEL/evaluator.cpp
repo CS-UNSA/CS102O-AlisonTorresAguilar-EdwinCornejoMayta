@@ -14,9 +14,10 @@ evaluator::evaluator(){
     function["sec"]=&evaluator::sec_;
     function["csc"]=&evaluator::csc_;
     function["csc"]=&evaluator::abs_;
+    operation["sqrt"]=&evaluator::sqrt_;
 }
 
- double evaluator::add(numv a,numv b){
+numv evaluator::add(numv a,numv b){
     return (a+b);
     }
 
@@ -65,6 +66,10 @@ numv evaluator::csc_(numv a){
 numv evaluator::abs_(numv a){
     return a>=0?a:-a;
     }
+numv evaluator::sqrt_(numv a,numv b){
+    return pow(a,1.0/b);
+    }
+
 numv evaluator::evaluar(numv a,numv b,oprv op){
     return (this->*operation[op])(a,b);
     }

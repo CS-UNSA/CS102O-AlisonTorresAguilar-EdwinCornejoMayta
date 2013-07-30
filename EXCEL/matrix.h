@@ -4,7 +4,8 @@
 #include <vector>
 #include <string>
 #include "cell.h"
-
+#include <fstream>
+//#include "definedtypes.h"
 using namespace std;
 class matrix
 {
@@ -13,9 +14,9 @@ private:
     vector< vector<cell > > spreadSheet;
     int currentRow,currentCol;
     int height,width;
+    char *filename;
 
 public:
-
     matrix():height(0),width(0){}
     matrix(int h=100,int w=100):height(h),width(w){ spreadSheet.resize( w,vector<cell>(h));}
     inline void setCurrentRow(int row){currentRow=row;}
@@ -32,7 +33,14 @@ public:
     void insertCell(int r,int c,string expression);
     void updateCell(int r,int c,string expression);
     cell* getCell(int r,int c);
+    inline void setFile(char * f){filename=f;}
+    bool loadFromFile();
+    bool writeTofile();
 
+    string getTextAt(int row,int col);
+    string getFormulaAt(int row,int col);
+    double getValueAt(int row,int col);
+    string toStr( numv n );
 };
 
 #endif // MATRIX_H

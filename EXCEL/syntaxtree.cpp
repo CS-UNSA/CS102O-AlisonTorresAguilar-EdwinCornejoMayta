@@ -66,6 +66,21 @@ void syntaxTree::buildBinaryTree(){
             operation++;
             break;
             }
+        case SEPARATOR:{
+            cout<<"eval.........."<<(outputList.front()).value<<endl;
+            operation= new nodeOperation();
+            outputList.pop_front();
+            cout<<"eval.........."<<(outputList.front()).value<<endl;
+            operation->setValue((outputList.front()).value);
+            operation->setRight(*auxStack.top());
+            auxStack.pop();
+            operation->setLeft(*auxStack.top());
+            auxStack.pop();
+            auxStack.push(operation);
+            operation++;
+
+            break;
+            }
         default:
             cout<<"there is an error"<<endl;
             break;

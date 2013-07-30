@@ -12,9 +12,7 @@ INCLUDEPATH += .
 QT += widgets
 
 # Input
-HEADERS += uicell.h \
-           uimainwindow.h \
-           uispreadsheet.h \
+HEADERS += \
     syntaxtree.h \
     parser.h \
     nodeoperation.h \
@@ -25,12 +23,13 @@ HEADERS += uicell.h \
     definedtypes.h \
     cell.h \
     evaluator.h \
-    spreadsheet.h
+    spreadsheet.h \
+    uicell.h \
+    uispreadsheet.h \
+    uimainwindow.h
 FORMS +=
-SOURCES += uicell.cpp \
+SOURCES += \
            main.cpp \
-           uimainwindow.cpp \
-           uispreadsheet.cpp \
     syntaxtree.cpp \
     parser.cpp \
     nodeoperation.cpp \
@@ -40,7 +39,10 @@ SOURCES += uicell.cpp \
     matrix.cpp \
     cell.cpp \
     evaluator.cpp \
-    spreadsheet.cpp
+    spreadsheet.cpp \
+    uicell.cpp \
+    uispreadsheet.cpp \
+    uimainwindow.cpp
 RESOURCES += uispreadsheet.qrc
 
 OTHER_FILES +=

@@ -3,6 +3,7 @@
 
 #include <QTableWidgetItem>
 
+class cell;
 class UICell : public QTableWidgetItem
 {
 public:
@@ -14,15 +15,20 @@ public:
     void setFormula(const QString &formula);
     QString formula() const;
     void setDirty();
-
-private:
+    void setValue(QVariant);
+    void setValue(QString);
     QVariant value() const;
-    QVariant evalExpression(const QString &str, int &pos) const;
-    QVariant evalTerm(const QString &str, int &pos) const;
-    QVariant evalFactor(const QString &str, int &pos) const;
-
+    void setCell(cell*c);
+private:
+   //QVariant value() const;
+   //QVariant evalExpression(const QString &str, int &pos) const;
+   //QVariant evalTerm(const QString &str, int &pos) const;
+   //QVariant evalFactor(const QString &str, int &pos) const;
+   //QVariant value;
     mutable QVariant cachedValue;
     mutable bool cacheIsDirty;
+    cell* currentCell;
 };
 
-#endif
+
+#endif // UICELL_H

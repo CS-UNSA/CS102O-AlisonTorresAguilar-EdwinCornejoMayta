@@ -18,10 +18,11 @@ typedef string  oprv;
 typedef string  nodev;
 typedef string  expression;
 typedef int     position;
+typedef int     typeCol;
+typedef int     typeRow;
+const string functions =" +0 -0 *1 /1 %1 sin2 cos2 tan2 ctg2 sec2 csc2 abs2 sqrt2";
 
-const string functions =" +0 -0 *1 /1 %1 sin2 cos2 tan2 ctg2 sec2 csc2 abs2 ";
-
-enum tokenType{ NUMBER, VARIABLE, LPARENTHESIS, RPARENTHESIS, OPERATOR, FUNCTION, NONE};
+enum tokenType{ NUMBER, VARIABLE, LPARENTHESIS, RPARENTHESIS, OPERATOR, FUNCTION,SEPARATOR,NONE};
 
 struct token{
     string value;

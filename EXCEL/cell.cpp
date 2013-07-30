@@ -14,7 +14,6 @@ cell::cell(){
      update();
  }
 
-
  void cell::print (){
      cout<<"Esto es:"<<endl;
  }

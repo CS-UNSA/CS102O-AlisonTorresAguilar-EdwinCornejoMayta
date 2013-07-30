@@ -26,6 +26,7 @@ public:
     numv sec_(numv a);
     numv csc_(numv a);
     numv abs_(numv a);
+    numv sqrt_(numv a,numv);
 
     numv evaluar(numv a,numv b,oprv op);
     numv evaluar(numv a,oprv op);

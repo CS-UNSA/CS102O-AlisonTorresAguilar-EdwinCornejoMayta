@@ -32,6 +32,10 @@ void parser::getTokens(){
             else
             t_type=VARIABLE;
         }
+        else if(buffer[i]==','||buffer[i]==':'){
+             t_value=buffer[i];
+             t_type=SEPARATOR;
+        }
         else if(buffer[i]=='('){
              t_value=buffer[i];
              t_type=LPARENTHESIS;
@@ -100,7 +104,8 @@ void parser::toPostfix(){
             break;
         case FUNCTION:
         case OPERATOR:
-            while (!outputStack.empty()&&((outputStack.top()).type==OPERATOR||(outputStack.top()).type==FUNCTION) && getPrecedingFunction(outputStack.top().value)>=getPrecedingFunction(t_value)){
+        case SEPARATOR:
+            while (!outputStack.empty()&&((outputStack.top()).type==OPERATOR||(outputStack.top()).type==FUNCTION ||(outputStack.top()).type==SEPARATOR) && getPrecedingFunction(outputStack.top().value)>=getPrecedingFunction(t_value)){
                  stk=outputStack.top();
                  outputList.push_back(stk);
                  outputStack.pop();

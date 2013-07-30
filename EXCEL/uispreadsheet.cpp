@@ -7,12 +7,14 @@ UISpreadsheet::UISpreadsheet(QWidget *parent)
     : QTableWidget(parent)
 {
     autoRecalc = true;
-
+    spreadSheet =new matrix(100,100);
     setItemPrototype(new UICell);
     setSelectionMode(ContiguousSelection);
 
     connect(this, SIGNAL(itemChanged(QTableWidgetItem *)),
             this, SLOT(somethingChanged()));
+
+
 
     clear();
 }
@@ -56,7 +58,7 @@ bool UISpreadsheet::readFile(const QString &fileName)
 {
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::warning(this, tr("UISpreadsheet"),
+        QMessageBox::warning(this, tr("Spreadsheet"),
                              tr("Cannot read file %1:\n%2.")
                              .arg(file.fileName())
                              .arg(file.errorString()));
@@ -93,7 +95,7 @@ bool UISpreadsheet::writeFile(const QString &fileName)
 {
     QFile file(fileName);
     if (!file.open(QIODevice::WriteOnly)) {
-        QMessageBox::warning(this, tr("UISpreadsheet"),
+        QMessageBox::warning(this, tr("Spreadsheet"),
                              tr("Cannot write file %1:\n%2.")
                              .arg(file.fileName())
                              .arg(file.errorString()));
@@ -116,6 +118,34 @@ bool UISpreadsheet::writeFile(const QString &fileName)
     QApplication::restoreOverrideCursor();
     return true;
 }
+
+/*
+void UISpreadsheet::sort(const SpreadsheetCompare &compare)
+{
+    QList<QStringList> rows;
+    QTableWidgetSelectionRange range = selectedRange();
+    int i;
+
+    for (i = 0; i < range.rowCount(); ++i) {
+        QStringList row;
+        for (int j = 0; j < range.columnCount(); ++j)
+            row.append(formula(range.topRow() + i,
+                               range.leftColumn() + j));
+        rows.append(row);
+    }
+
+    qStableSort(rows.begin(), rows.end(), compare);
+
+    for (i = 0; i < range.rowCount(); ++i) {
+        for (int j = 0; j < range.columnCount(); ++j)
+            setFormula(range.topRow() + i, range.leftColumn() + j,
+                       rows[i][j]);
+    }
+
+    clearSelection();
+    somethingChanged();
+}
+*/
 
 void UISpreadsheet::cut()
 {
@@ -255,6 +285,30 @@ void UISpreadsheet::somethingChanged()
     if (autoRecalc)
         recalculate();
     emit modified();
+   /*
+    string currentF,currentT;
+
+    currentF=formula(currentRow(),currentColumn()).toStdString();
+    currentT=text(currentRow(),currentColumn()).toStdString();
+    spreadSheet->insertCell(currentRow(),currentColumn(),currentF);
+
+    cout<<"******************************************************"<<endl;
+    cout<<" formula  "<<currentF<<endl;
+    cout<<" text     "<<currentT<<endl;
+    double value=this->spreadSheet->getValueAt(currentRow(),currentColumn());
+    cout<<" value    "<<value<<endl;
+
+    cout<<currentRow()<<" ";
+    cout<<currentColumn()<<endl;
+
+    cout<<"***************************************************"<<endl;
+    */
+
+
+    UICell *c = cell(currentRow(),currentColumn());
+    c->setCell(spreadSheet->getCell(currentRow(),currentColumn()));
+
+
 }
 
 UICell *UISpreadsheet::cell(int row, int column) const
@@ -293,3 +347,51 @@ QString UISpreadsheet::text(int row, int column) const
     }
 }
 
+QVariant UISpreadsheet::value(int row, int column) const
+{
+    UICell *c = cell(row, column);
+    if (c) {
+        return c->value();
+    } else {
+        return 0;
+    }
+}
+
+
+void UISpreadsheet::setValue(int row, int column, const QVariant &value){
+    UICell *c = cell(row, column);
+    if (!c) {
+        c = new UICell;
+        setItem(row, column, c);
+    }
+    c->setValue(value);
+}
+/*
+bool SpreadsheetCompare::operator()(const QStringList &row1,
+                                    const QStringList &row2) const
+{
+    for (int i = 0; i < KeyCount; ++i) {
+        int column = keys[i];
+        if (column != -1) {
+            if (row1[column] != row2[column]) {
+                if (ascending[i]) {
+                    return row1[column] < row2[column];
+                } else {
+                    return row1[column] > row2[column];
+                }
+            }
+        }
+    }
+    return false;
+}
+*/
+
+void UISpreadsheet::updateStatus(QTableWidgetItem *item)
+{
+    /*
+   if (item && item == this->currentItem()) {
+        statusBar()->showMessage(item->data(Qt::StatusTipRole).toString(), 1000);
+        cellLabel->setText(tr("Cell: (%1)").arg(encode_pos(table->row(item), table->column(item))));
+        cellLabel->setText(tr("Cell: (%1)").arg(encode_pos(this->row(item), this->column(item))));
+    }*/
+}

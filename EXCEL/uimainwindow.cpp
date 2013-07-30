@@ -43,7 +43,7 @@ void UIMainWindow::open()
     if (okToContinue()) {
         QString fileName = QFileDialog::getOpenFileName(this,
                                    tr("Open Spreadsheet"), ".",
-                                   tr("Spreadsheet files (*.oad)"));
+                                   tr("Spreadsheet files (*.sp)"));
         if (!fileName.isEmpty())
             loadFile(fileName);
     }
@@ -62,7 +62,7 @@ bool UIMainWindow::saveAs()
 {
     QString fileName = QFileDialog::getSaveFileName(this,
                                tr("Save Spreadsheet"), ".",
-                               tr("Spreadsheet files (*.oad)"));
+                               tr("Spreadsheet files (*.sp)"));
     if (fileName.isEmpty())
         return false;
 
@@ -71,23 +71,71 @@ bool UIMainWindow::saveAs()
 
 void UIMainWindow::find()
 {
+  /*  if (!findDialog) {
+        findDialog = new FindDialog(this);
+        connect(findDialog, SIGNAL(findNext(const QString &,
+                                            Qt::CaseSensitivity)),
+                spreadsheet, SLOT(findNext(const QString &,
+                                           Qt::CaseSensitivity)));
+        connect(findDialog, SIGNAL(findPrevious(const QString &,
+                                                Qt::CaseSensitivity)),
+                spreadsheet, SLOT(findPrevious(const QString &,
+                                               Qt::CaseSensitivity)));
+    }
 
+    findDialog->show();
+    findDialog->raise();
+    findDialog->activateWindow();*/
 }
 
 void UIMainWindow::goToCell()
 {
-
+    /*
+    GoToCellDialog dialog(this);
+    if (dialog.exec()) {
+        QString str = dialog.lineEdit->text().toUpper();
+        spreadsheet->setCurrentCell(str.mid(1).toInt() - 1,
+                                    str[0].unicode() - 'A');
+    }
+    */
 }
 
 void UIMainWindow::sort()
 {
+    /*
+    SortDialog dialog(this);
+    QTableWidgetSelectionRange range = spreadsheet->selectedRange();
+    dialog.setColumnRange('A' + range.leftColumn(),
+                          'A' + range.rightColumn());
 
+    if (dialog.exec()) {
+        SpreadsheetCompare compare;
+        compare.keys[0] =
+              dialog.primaryColumnCombo->currentIndex();
+        compare.keys[1] =
+              dialog.secondaryColumnCombo->currentIndex() - 1;
+        compare.keys[2] =
+              dialog.tertiaryColumnCombo->currentIndex() - 1;
+        compare.ascending[0] =
+              (dialog.primaryOrderCombo->currentIndex() == 0);
+        compare.ascending[1] =
+              (dialog.secondaryOrderCombo->currentIndex() == 0);
+        compare.ascending[2] =
+              (dialog.tertiaryOrderCombo->currentIndex() == 0);
+        spreadsheet->sort(compare);
+    }
+    */
 }
 
 void UIMainWindow::about()
 {
     QMessageBox::about(this, tr("About Spreadsheet"),
-            tr("Proyecto OAD CS-UNsa"));
+            tr("<h2>Spreadsheet 1.1</h2>"
+               "<p>Copyright &copy; 2008 Software Inc."
+               "<p>Spreadsheet is a small application that "
+               "demonstrates QAction, QUIMainWindow, QMenuBar, "
+               "QStatusBar, QTableWidget, QToolBar, and many other "
+               "Qt classes."));
 }
 
 void UIMainWindow::openRecentFile()
@@ -103,6 +151,7 @@ void UIMainWindow::updateStatusBar()
 {
     locationLabel->setText(spreadsheet->currentLocation());
     formulaLabel->setText(spreadsheet->currentFormula());
+
 }
 
 void UIMainWindow::spreadsheetModified()

@@ -2,9 +2,11 @@
 #define UISPREADSHEET_H
 
 #include <QTableWidget>
-
+#include <iostream>
+#include "matrix.h"
 QT_BEGIN_NAMESPACE
 class UICell;
+using namespace std;
 QT_END_NAMESPACE
 
 class UISpreadsheet : public QTableWidget
@@ -21,7 +23,7 @@ public:
     void clear();
     bool readFile(const QString &fileName);
     bool writeFile(const QString &fileName);
-
+    //void sort(const SpreadsheetCompare &compare);
 
 public slots:
     void cut();
@@ -43,15 +45,27 @@ private slots:
 
 private:
     enum { MagicNumber = 0x7F51C883, RowCount = 999, ColumnCount = 26 };
-
+    QVariant value(int row,int column) const;
     UICell *cell(int row, int column) const;
     QString text(int row, int column) const;
     QString formula(int row, int column) const;
     void setFormula(int row, int column, const QString &formula);
-
+    void setValue(int row, int column, const QVariant &value);
+    matrix * spreadSheet;
     bool autoRecalc;
+    void updateStatus(QTableWidgetItem *item);
 };
 
+/*
+class UISpreadsheetCompare
+{
+public:
+    bool operator()(const QStringList &row1,
+                    const QStringList &row2) const;
 
-
+    enum { KeyCount = 3 };
+    int keys[KeyCount];
+    bool ascending[KeyCount];
+};
+*/
 #endif

@@ -5,7 +5,6 @@
 #include "definedtypes.h"
 #include "node.h"
 
-
 using namespace std;
 
 class matrix;
@@ -14,8 +13,8 @@ class cell
 {
 
 private:
-    int           row;
-    int           col;
+    typeRow       row;
+    typeCol       col;
     string        expression;
     syntaxTree    *tree;
     vector<cell*> usedBy;
@@ -29,7 +28,9 @@ public:
     inline int getRow()const{return row;}
     inline int getCol()const{return col;}
     inline void setValue(numv val){value=val;}
-    inline numv getValue(){return value;}
+     numv getValue(){return value;}
+    // string getValue(){return expression;}
+
     inline string getExpression(){return expression;}
     void setExpression(string e);
     void setCurrentSS(matrix *m);

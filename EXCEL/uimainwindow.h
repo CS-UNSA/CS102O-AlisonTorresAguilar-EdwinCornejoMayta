@@ -1,11 +1,12 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef UIMAINWINDOW_H
+#define UIMAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLabel>
 
-class QAction;
-class QLabel;
+QT_BEGIN_NAMESPACE
 class UISpreadsheet;
+QT_END_NAMESPACE
 
 class UIMainWindow : public QMainWindow
 {
@@ -46,6 +47,7 @@ private:
     QString strippedName(const QString &fullFileName);
 
     UISpreadsheet *spreadsheet;
+   // FindDialog *findDialog;
     QLabel *locationLabel;
     QLabel *formulaLabel;
     QStringList recentFiles;
@@ -85,4 +87,4 @@ private:
     QAction *aboutQtAction;
 };
 
-#endif
+#endif // UIMAINWINDOW_H

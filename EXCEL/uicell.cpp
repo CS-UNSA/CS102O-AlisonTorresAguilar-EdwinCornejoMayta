@@ -1,7 +1,9 @@
-#include <QtGui>
-
+#include <QtWidgets>
 #include "uicell.h"
+#include <iostream>
+#include <cell.h>
 
+using namespace std;
 UICell::UICell()
 {
     setDirty();
@@ -22,11 +24,16 @@ void UICell::setData(int role, const QVariant &value)
 QVariant UICell::data(int role) const
 {
     if (role == Qt::DisplayRole) {
-        if (value().isValid()) {
+       if (value().isValid()) {
+            //**************************************
+           cout<<"******************"<<endl;
+            cout<<"value"<<value().toString().toStdString()<<endl;
+            cout<<"formula"<<formula().toStdString()<<endl;
             return value().toString();
-        } else {
-            return "####";
-        }
+         }else {
+            cout<<"value- "<<value().toString().toStdString()<<endl;
+            cout<<"formula--"<<formula().toStdString()<<endl;
+           return "######";}
     } else if (role == Qt::TextAlignmentRole) {
         if (value().type() == QVariant::String) {
             return int(Qt::AlignLeft | Qt::AlignVCenter);
@@ -57,35 +64,35 @@ const QVariant Invalid;
 
 QVariant UICell::value() const
 {
-    if (cacheIsDirty) {
-        cacheIsDirty = false;
-
+    /*
         QString formulaStr = formula();
-        if (formulaStr.startsWith('\'')) {
+        if (formulaStr.startsWith('='))
             cachedValue = formulaStr.mid(1);
-        } else if (formulaStr.startsWith('=')) {
-            cachedValue = Invalid;
-            QString expr = formulaStr.mid(1);
-            expr.replace(" ", "");
-            expr.append(QChar::Null);
+        else
+            cachedValue = formulaStr;
 
-            int pos = 0;
-            cachedValue = evalExpression(expr, pos);
-            if (expr[pos] != QChar::Null)
-                cachedValue = Invalid;
-        } else {
-            bool ok;
-            double d = formulaStr.toDouble(&ok);
-            if (ok) {
-                cachedValue = d;
-            } else {
-                cachedValue = formulaStr;
-            }
-        }
-    }
+        //UICell *c = static_cast<UICell *>(this->tableWidget()->item(row, column));
+    this->tableWidget();*/
+    currentCell->setExpression(formula().toStdString());
+    cachedValue=this->currentCell->getValue();
     return cachedValue;
 }
 
+void UICell::setValue(QVariant v){
+    cachedValue=v;
+    cout<<"set valueeeee a "<<endl;
+}
+
+void UICell::setValue(QString v){
+    cachedValue=v;
+    cout<<"set valueeeee a "<<endl;
+}
+
+void UICell::setCell(cell*c){
+    currentCell=c;
+}
+
+/*
 QVariant UICell::evalExpression(const QString &str, int &pos) const
 {
     QVariant result = evalTerm(str, pos);
@@ -109,7 +116,9 @@ QVariant UICell::evalExpression(const QString &str, int &pos) const
     }
     return result;
 }
+*/
 
+/*
 QVariant UICell::evalTerm(const QString &str, int &pos) const
 {
     QVariant result = evalFactor(str, pos);
@@ -137,7 +146,9 @@ QVariant UICell::evalTerm(const QString &str, int &pos) const
     }
     return result;
 }
+*/
 
+/*
 QVariant UICell::evalFactor(const QString &str, int &pos) const
 {
     QVariant result;
@@ -191,3 +202,4 @@ QVariant UICell::evalFactor(const QString &str, int &pos) const
     }
     return result;
 }
+*/

@@ -20,7 +20,7 @@ void nodeCell::setValue(cellv v){
 
 void nodeCell::setMatrix(matrix *m){
     getRowCol();
-    pcell=m->getCell(col,row);
+    pcell=m->getCell(row,col);
 
 }
 
@@ -30,4 +30,7 @@ void nodeCell::addUsedBy(cell *toAdd){
 void nodeCell::getRowCol(){
     col=value[0]-'A';
     row=value[1]-'0'-1;
+
+   // cout<<"col"<<col<<endl;
+    //cout<<"row"<<row<<endl;
 }
