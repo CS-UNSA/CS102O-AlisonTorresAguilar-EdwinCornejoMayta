@@ -73,8 +73,13 @@ QVariant UICell::value() const
 
         //UICell *c = static_cast<UICell *>(this->tableWidget()->item(row, column));
     this->tableWidget();*/
+    if(formula().toStdString()==""){
+        cachedValue=formula();
+    }
+    else {
     currentCell->setExpression(formula().toStdString());
     cachedValue=this->currentCell->getValue();
+    }
     return cachedValue;
 }
 
