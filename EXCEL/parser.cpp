@@ -5,11 +5,19 @@ parser::parser()
     bufferSize=0;
 }
 
+contentType parser::getTypeContent(){
+ return content;
+}
 void parser::getTokens(){
    bufferSize=buffer.length();
    token t;
    tokenValue t_value="";
    tokenType  t_type=NONE;
+   
+   if(buffer[0]=='='){
+           buffer=buffer.substr(1,buffer.size());
+           content=EXPRESSION;
+   }
     for (unsigned int i=0;i<bufferSize;++i){
         if(isdigit(buffer[i])){
             t_value=buffer[i];
@@ -49,7 +57,7 @@ void parser::getTokens(){
              t_type=OPERATOR;
         }
         else{
-            cerr<< "error"<<endl;
+            cerr<<"error"<<endl;
             break;
         }
 

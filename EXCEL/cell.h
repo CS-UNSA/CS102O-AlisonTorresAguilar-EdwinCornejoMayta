@@ -20,6 +20,7 @@ private:
     vector<cell*> usedBy;
     numv          value;
     matrix        *currentMatrix;
+    contentType   content;
 public:
     cell();
     cell(int r,int c):row(r),col(c){}
@@ -28,7 +29,8 @@ public:
     inline int getRow()const{return row;}
     inline int getCol()const{return col;}
     inline void setValue(numv val){value=val;}
-     numv getValue(){return value;}
+    numv getValue(){return value;}
+    inline contentType getType(){return content;}
     // string getValue(){return expression;}
 
     inline string getExpression(){return expression;}

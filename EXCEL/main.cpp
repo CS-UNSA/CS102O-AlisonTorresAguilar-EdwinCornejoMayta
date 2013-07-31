@@ -8,7 +8,7 @@
 
 int main(int argc, char **argv)
 {
-
+    /*
     matrix excel (100,100);
     excel.insertCell(0,0,"50/2");
     excel.insertCell(0,1,"A1+7");
@@ -34,6 +34,7 @@ int main(int argc, char **argv)
     cout<<excel.getCell(0,0)->getValue()<<endl;
     cout<<excel.getCell(0,1)->getValue()<<endl;
     cout<<excel.getCell(0,2)->getValue()<<endl;
+    */
 
     QApplication app(argc, argv);
     UIMainWindow mainWin;

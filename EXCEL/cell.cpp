@@ -2,6 +2,7 @@
 #include "syntaxtree.h"
 #include "matrix.h"
 cell::cell(){
+   // value=-1;
 }
 
  void cell::setExpression(string e){
@@ -9,9 +10,12 @@ cell::cell(){
      tree->setCurrentC(this);
      tree->setCurrentSS(currentMatrix);
      expression=e;
-     tree->built(expression);
+     content=tree->built(expression);
+     if(content!=TEXT){
      value=tree->evaluateTree();
      update();
+     }
+
  }
 
  void cell::print (){

@@ -14,8 +14,6 @@ UISpreadsheet::UISpreadsheet(QWidget *parent)
     connect(this, SIGNAL(itemChanged(QTableWidgetItem *)),
             this, SLOT(somethingChanged()));
 
-
-
     clear();
 }
 

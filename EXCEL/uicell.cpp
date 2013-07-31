@@ -26,13 +26,13 @@ QVariant UICell::data(int role) const
     if (role == Qt::DisplayRole) {
        if (value().isValid()) {
             //**************************************
-           cout<<"******************"<<endl;
-            cout<<"value"<<value().toString().toStdString()<<endl;
-            cout<<"formula"<<formula().toStdString()<<endl;
+            //cout<<"******************"<<endl;
+            //cout<<"value"<<value().toString().toStdString()<<endl;
+            //cout<<"formula"<<formula().toStdString()<<endl;
             return value().toString();
          }else {
-            cout<<"value- "<<value().toString().toStdString()<<endl;
-            cout<<"formula--"<<formula().toStdString()<<endl;
+            //cout<<"value- "<<value().toString().toStdString()<<endl;
+            //cout<<"formula--"<<formula().toStdString()<<endl;
            return "######";}
     } else if (role == Qt::TextAlignmentRole) {
         if (value().type() == QVariant::String) {
@@ -73,7 +73,12 @@ QVariant UICell::value() const
 
         //UICell *c = static_cast<UICell *>(this->tableWidget()->item(row, column));
     this->tableWidget();*/
-    if(formula().toStdString()==""){
+
+   // cout<<"type "<<currentCell->getType()<<endl;
+    currentCell->setExpression(formula().toStdString());
+    cout<<"type "<<currentCell->getType()<<endl;
+   if(this->currentCell->getType()==TEXT){
+   //if(formula().toStdString()==""){
         cachedValue=formula();
     }
     else {

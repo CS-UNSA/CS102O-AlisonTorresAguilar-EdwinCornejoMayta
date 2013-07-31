@@ -32,7 +32,7 @@ public:
     void postorderTraversal() const;
     void buildBinaryTree();
     numv evaluateTree();
-    node*  built(string expression);
+    contentType built(string expression);
     void setCurrentSS(matrix *m);
     void setCurrentC(cell *c);
 

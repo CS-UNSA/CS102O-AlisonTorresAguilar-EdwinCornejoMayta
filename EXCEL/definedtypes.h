@@ -24,6 +24,7 @@ const string functions =" +0 -0 *1 /1 %1 sin2 cos2 tan2 ctg2 sec2 csc2 abs2 sqrt
 
 enum tokenType{ NUMBER, VARIABLE, LPARENTHESIS, RPARENTHESIS, OPERATOR, FUNCTION,SEPARATOR,NONE};
 
+enum contentType{TEXT,NUMERIC,EXPRESSION};
 struct token{
     string value;
     tokenType type;

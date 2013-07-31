@@ -8,7 +8,7 @@
 #include <iostream>
 #include <assert.h>
 #include "definedtypes.h"
-//#include "syntaxtree.h"
+
 using namespace std;
 
 class parser
@@ -17,11 +17,21 @@ class parser
 public:
     parser();
     parser(string b):buffer(b){}
-    inline  void setBuffer(string b){buffer=b;}
+    inline  void setBuffer(string b){buffer=b;
+    if(buffer[0]=='='){
+     buffer=buffer.substr(1,buffer.size());
+     content= EXPRESSION;
+    }else if(isdigit(buffer[0])){
+     content=  NUMERIC;
+    }else
+     content= TEXT;
+
+    }
     inline  string getBuffer() {return buffer;}
     inline list<token>* getOutputList(){return &outputList;}
     void getTokens();
     void toPostfix();
+    contentType getTypeContent();
 
 private:
     string       buffer;
@@ -29,6 +39,7 @@ private:
     list<token>  tokenList;
     list<token>  outputList;
     stack<token> outputStack;
+    contentType  content;
     int getPrecedingFunction(string fun);
 };
 

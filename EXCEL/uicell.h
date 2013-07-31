@@ -2,7 +2,7 @@
 #define UICELL_H
 
 #include <QTableWidgetItem>
-
+#include "definedtypes.h"
 class cell;
 class UICell : public QTableWidgetItem
 {

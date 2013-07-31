@@ -2,15 +2,18 @@
 #include "cell.h"
 #include "matrix.h"
 
-node* syntaxTree::built(string expression){
+contentType syntaxTree::built(string expression){
     parser parseTree(expression);
 
     parseTree.setBuffer(expression);
+    if(  parseTree.getTypeContent()!=TEXT){
     parseTree.getTokens();
     parseTree.toPostfix();
     outputList=*parseTree.getOutputList();
     buildBinaryTree();
-    return root;
+    }
+
+   return parseTree.getTypeContent();
 }
 void syntaxTree::buildBinaryTree(){
    eval =new evaluator();
