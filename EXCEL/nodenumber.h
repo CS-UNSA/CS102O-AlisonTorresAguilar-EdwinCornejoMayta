@@ -10,9 +10,26 @@ private:
     numv  toNumv( string s );
 
 public:
+    /**
+     * @brief nodeNumber
+     */
     nodeNumber();
+
+    /**
+     * @brief print
+     */
     void print();
+
+    /**
+     * @brief getValue
+     * @return
+     */
     void* getValue();
+
+    /**
+     * @brief setValue
+     * @param v
+     */
     void setValue(nodev v);
 
 };

@@ -16,6 +16,9 @@
      spreadSheet[r][c].setExpression(expression);
  }
 
+ void matrix::updateCell(int r,int c){
+     spreadSheet[r][c].update();
+ }
  cell* matrix::getCell(int r,int c){
      spreadSheet[r][c].setCurrentSS(this);
      return &spreadSheet[r][c];
@@ -38,7 +41,14 @@
  }
 
  bool matrix::writeTofile(){
-
+     ofstream file (filename);
+     for (size i=0;i<currentRow;i++){
+         for (size j=0;j<currentRow;j++){
+            file<<spreadSheet[i][j].getRow()<<" ";
+            file<<spreadSheet[i][j].getCol()<<" ";
+            file<<spreadSheet[i][j].getExpression();
+         }
+     }
  }
 
  string matrix::getTextAt(int row,int col){

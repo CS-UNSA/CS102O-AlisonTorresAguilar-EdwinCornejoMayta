@@ -15,8 +15,21 @@ class parser
 {
 
 public:
+    /**
+     * @brief parser
+     */
     parser();
+
+    /**
+     * @brief parser
+     * @param b
+     */
     parser(string b):buffer(b){}
+
+    /**
+     * @brief setBuffer
+     * @param b
+     */
     inline  void setBuffer(string b){buffer=b;
     if(buffer[0]=='='){
      buffer=buffer.substr(1,buffer.size());
@@ -25,14 +38,36 @@ public:
      content=  NUMERIC;
     }else
      content= TEXT;
-
     }
-    inline  string getBuffer() {return buffer;}
-    inline list<token>* getOutputList(){return &outputList;}
-    void getTokens();
-    void toPostfix();
-    contentType getTypeContent();
 
+    /**
+     * @brief getBuffer
+     * @return
+     */
+    inline  string getBuffer() {return buffer;}
+
+    /**
+     * @brief getOutputList
+     * @return
+     */
+    inline list<token>* getOutputList(){return &outputList;}
+
+    /**
+     * @brief getTokens
+     */
+    void getTokens();
+
+    /**
+     * @brief toPostfix
+     */
+    void toPostfix();
+
+    /**
+     * @brief getTypeContent
+     * @return
+     */
+    contentType getTypeContent();
+    void cleanBuffer ();
 private:
     string       buffer;
     size         bufferSize;

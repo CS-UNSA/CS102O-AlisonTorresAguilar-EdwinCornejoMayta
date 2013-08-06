@@ -9,9 +9,26 @@ protected:
     string nOperation;
 
 public:
+    /**
+     * @brief nodeOperation
+     */
     nodeOperation();
+
+    /**
+     * @brief print
+     */
     void print();
+
+    /**
+     * @brief getValue
+     * @return
+     */
     void*getValue();
+
+    /**
+     * @brief setValue
+     * @param v
+     */
     void setValue(oprv v);
 };
 

@@ -130,12 +130,10 @@ void UIMainWindow::sort()
 void UIMainWindow::about()
 {
     QMessageBox::about(this, tr("About Spreadsheet"),
-            tr("<h2>Spreadsheet 1.1</h2>"
-               "<p>Copyright &copy; 2008 Software Inc."
-               "<p>Spreadsheet is a small application that "
-               "demonstrates QAction, QUIMainWindow, QMenuBar, "
-               "QStatusBar, QTableWidget, QToolBar, and many other "
-               "Qt classes."));
+            tr("<h2>EXCEL OAD</h2>"
+               "<p>Cornejo Mayta Edwin"
+               "<p>Torres Aguilar Alison"
+                ));
 }
 
 void UIMainWindow::openRecentFile()
@@ -313,7 +311,7 @@ void UIMainWindow::createMenus()
     fileMenu->addSeparator();
     fileMenu->addAction(exitAction);
 
-    editMenu = menuBar()->addMenu(tr("&Edit"));
+  /*  editMenu = menuBar()->addMenu(tr("&Edit"));
     editMenu->addAction(cutAction);
     editMenu->addAction(copyAction);
     editMenu->addAction(pasteAction);
@@ -337,10 +335,10 @@ void UIMainWindow::createMenus()
     optionsMenu->addAction(autoRecalcAction);
 
     menuBar()->addSeparator();
-
+*/
     helpMenu = menuBar()->addMenu(tr("&Help"));
     helpMenu->addAction(aboutAction);
-    helpMenu->addAction(aboutQtAction);
+ //   helpMenu->addAction(aboutQtAction);
 }
 
 void UIMainWindow::createContextMenu()
@@ -357,14 +355,14 @@ void UIMainWindow::createToolBars()
     fileToolBar->addAction(newAction);
     fileToolBar->addAction(openAction);
     fileToolBar->addAction(saveAction);
-
+/*
     editToolBar = addToolBar(tr("&Edit"));
     editToolBar->addAction(cutAction);
     editToolBar->addAction(copyAction);
     editToolBar->addAction(pasteAction);
     editToolBar->addSeparator();
     editToolBar->addAction(findAction);
-    editToolBar->addAction(goToCellAction);
+    editToolBar->addAction(goToCellAction);*/
 }
 
 void UIMainWindow::createStatusBar()

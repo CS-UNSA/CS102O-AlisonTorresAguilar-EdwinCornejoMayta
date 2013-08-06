@@ -13,7 +13,7 @@ cell::cell(){
      content=tree->built(expression);
      if(content!=TEXT){
      value=tree->evaluateTree();
-     update();
+   //  update();
      }
 
  }
@@ -34,10 +34,12 @@ void cell::evaluate(){
     value=tree->evaluateTree();
 }
 void cell::update(){
+     cout<<"-------------ACTUALIZA------------------"<<endl;
     vector<cell*>::iterator it;
     for(it=usedBy.begin();it!=usedBy.end();it++){
        (*it)->evaluate();
        (*it)->update();
+        cout<<"actualiza**************************"<<this->expression<<endl;
     }
 
 }

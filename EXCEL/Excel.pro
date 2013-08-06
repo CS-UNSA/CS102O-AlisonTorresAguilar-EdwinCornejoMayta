@@ -23,7 +23,6 @@ HEADERS += \
     definedtypes.h \
     cell.h \
     evaluator.h \
-    spreadsheet.h \
     uicell.h \
     uispreadsheet.h \
     uimainwindow.h
@@ -39,7 +38,6 @@ SOURCES += \
     matrix.cpp \
     cell.cpp \
     evaluator.cpp \
-    spreadsheet.cpp \
     uicell.cpp \
     uispreadsheet.cpp \
     uimainwindow.cpp

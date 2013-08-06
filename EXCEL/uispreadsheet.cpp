@@ -163,6 +163,7 @@ void UISpreadsheet::copy()
             if (j > 0)
                 str += "\t";
             str += formula(range.topRow() + i, range.leftColumn() + j);
+            cout<<str.toStdString()<<" to copy "<<endl;
         }
     }
     QApplication::clipboard()->setText(str);
@@ -175,6 +176,7 @@ void UISpreadsheet::paste()
     QStringList rows = str.split('\n');
     int numRows = rows.count();
     int numColumns = rows.first().count('\t') + 1;
+    cout<<str.toStdString()<<" to paste "<<endl;
 
     if (range.rowCount() * range.columnCount() != 1
             && (range.rowCount() != numRows
@@ -185,16 +187,24 @@ void UISpreadsheet::paste()
         return;
     }
 
+    cout<<"hola-------------------------------"<<endl;
+    
     for (int i = 0; i < numRows; ++i) {
         QStringList columns = rows[i].split('\t');
+        cout<<"---"<<columns[0].toStdString();
+      //  cout<<" tmb "<<columns[1].toStdString()<<endl;
+        cout<<numRows<<"filas to copy"<<endl;
         for (int j = 0; j < numColumns; ++j) {
             int row = range.topRow() + i;
+            cout<<"row"<<row<<endl;
             int column = range.leftColumn() + j;
             if (row < RowCount && column < ColumnCount)
                 setFormula(row, column, columns[j]);
+            //somethingChanged();
+               // cout<<columns[j].toStdString()<<"should paste "<<endl;
         }
     }
-    somethingChanged();
+   // somethingChanged();
 }
 
 void UISpreadsheet::del()
@@ -280,9 +290,11 @@ void UISpreadsheet::findPrevious(const QString &str,
 
 void UISpreadsheet::somethingChanged()
 {
+    /*
     if (autoRecalc)
         recalculate();
-    emit modified();
+        */
+  //  emit modified();
    /*
     string currentF,currentT;
 
@@ -303,10 +315,13 @@ void UISpreadsheet::somethingChanged()
     */
 
 
-    UICell *c = cell(currentRow(),currentColumn());
-    c->setCell(spreadSheet->getCell(currentRow(),currentColumn()));
-
-
+   UICell *c = cell(currentRow(),currentColumn());
+   c->setCell(spreadSheet->getCell(currentRow(),currentColumn()));
+   // c->update();
+    //cout<<" AQUI"<<c->formula().toStdString()<<endl;
+    //setFormula(currentRow(),currentColumn(),"666");
+    //cout<<"something changeeeeeeeeeeeeeeeeeeeeeeeeeeee"<<endl;
+   this->setCurrentCell(currentRow()+1,currentColumn());
 }
 
 UICell *UISpreadsheet::cell(int row, int column) const

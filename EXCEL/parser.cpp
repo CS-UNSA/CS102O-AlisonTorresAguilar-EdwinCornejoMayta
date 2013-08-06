@@ -9,7 +9,9 @@ contentType parser::getTypeContent(){
  return content;
 }
 void parser::getTokens(){
+   buffer=buffer.erase(buffer.find_last_not_of(" \n\r\t")+1);
    bufferSize=buffer.length();
+
    token t;
    tokenValue t_value="";
    tokenType  t_type=NONE;
@@ -135,4 +137,7 @@ void parser::toPostfix(){
 }// end of function
 
 
+void parser::cleanBuffer (){
 
+
+}

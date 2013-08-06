@@ -13,6 +13,7 @@ class cell
 {
 
 private:
+
     typeRow       row;
     typeCol       col;
     string        expression;
@@ -22,23 +23,97 @@ private:
     matrix        *currentMatrix;
     contentType   content;
 public:
+    /**
+     * @brief cell
+     */
     cell();
-    cell(int r,int c):row(r),col(c){}
-    inline void setRow(int r) {row=r;}
-    inline void setCol(int c) {col=c;}
-    inline int getRow()const{return row;}
-    inline int getCol()const{return col;}
-    inline void setValue(numv val){value=val;}
-    numv getValue(){return value;}
-    inline contentType getType(){return content;}
-    // string getValue(){return expression;}
 
+    /**
+     * @brief cell
+     * @param r
+     * @param c
+     */
+    cell(int r,int c):row(r),col(c){}
+
+    /**
+     * @brief setRow
+     * @param r
+     */
+    inline void setRow(int r) {row=r;}
+
+    /**
+     * @brief setCol
+     * @param c
+     */
+    inline void setCol(int c) {col=c;}
+
+    /**
+     * @brief getRow
+     * @return
+     */
+    inline int getRow()const{return row;}
+
+    /**
+     * @brief getCol
+     * @return
+     */
+    inline int getCol()const{return col;}
+
+    /**
+     * @brief setValue
+     * @param val
+     */
+    inline void setValue(numv val){value=val;}
+
+    /**
+     * @brief getValue
+     * @return
+     */
+    numv getValue(){return value;}
+
+    /**
+     * @brief getType
+     * @return
+     */
+    inline contentType getType(){return content;}
+
+    /**
+     * @brief getExpression
+     * @return
+     */
     inline string getExpression(){return expression;}
+
+    /**
+     * @brief setExpression
+     * @param e
+     */
     void setExpression(string e);
+
+    /**
+     * @brief setCurrentSS
+     * @param m
+     */
     void setCurrentSS(matrix *m);
+
+    /**
+     * @brief print
+     */
     void print ();
+
+    /**
+     * @brief addUsedBy
+     * @param p
+     */
     void addUsedBy(cell* p);
+
+    /**
+     * @brief update
+     */
     void update();
+
+    /**
+     * @brief evaluate
+     */
     void evaluate();
 };
 #endif // CELL_H

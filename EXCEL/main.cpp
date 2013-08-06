@@ -8,33 +8,39 @@
 
 int main(int argc, char **argv)
 {
-    /*
+
+/*
     matrix excel (100,100);
-    excel.insertCell(0,0,"50/2");
-    excel.insertCell(0,1,"A1+7");
-    excel.insertCell(0,2,"(A2+3)*A1");
+    excel.insertCell(0,0,"5");
+    excel.insertCell(1,0,"=A1+1");
+    excel.insertCell(2,0,"=A2+1");
+    excel.insertCell(3,0,"=A3+1");
+    excel.insertCell(4,0,"=A4+1");
+    excel.insertCell(5,0,"=A2+A3");
+    excel.insertCell(6,0,"=A5*A5");
+
+
     cout<<excel.getCell(0,0)->getValue()<<endl;
-    cout<<excel.getCell(0,1)->getValue()<<endl;
-    cout<<excel.getCell(0,2)->getValue()<<endl;
+    cout<<excel.getCell(1,0)->getValue()<<endl;
+    cout<<excel.getCell(2,0)->getValue()<<endl;
+    cout<<excel.getCell(3,0)->getValue()<<endl;
+    cout<<excel.getCell(4,0)->getValue()<<endl;
+    cout<<excel.getCell(5,0)->getValue()<<endl;
+    cout<<excel.getCell(6,0)->getValue()<<endl;
 
     cout<<"actualizacion"<<endl;
-    excel.updateCell(0,0,"4+8");
+    excel.updateCell(0,0,"0");
 
-    excel.insertCell(0,3,"A2+A1");
-    // excel.updateCell(0,0,"A1+5");
-    cout<<excel.getCell(0,0)->getValue()<<endl;
-    cout<<excel.getCell(0,1)->getValue()<<endl;
-    cout<<excel.getCell(0,2)->getValue()<<endl;
-
-    cout<<excel.getCell(0,3)->getValue()<<endl;
-
-    cout<<"actualizacion"<<endl;
-    excel.updateCell(0,1,"sqrt(3,2)");
 
     cout<<excel.getCell(0,0)->getValue()<<endl;
-    cout<<excel.getCell(0,1)->getValue()<<endl;
-    cout<<excel.getCell(0,2)->getValue()<<endl;
-    */
+    cout<<excel.getCell(1,0)->getValue()<<endl;
+    cout<<excel.getCell(2,0)->getValue()<<endl;
+    cout<<excel.getCell(3,0)->getValue()<<endl;
+    cout<<excel.getCell(4,0)->getValue()<<endl;
+    cout<<excel.getCell(5,0)->getValue()<<endl;
+    cout<<excel.getCell(6,0)->getValue()<<endl;
+
+  */
 
     QApplication app(argc, argv);
     UIMainWindow mainWin;

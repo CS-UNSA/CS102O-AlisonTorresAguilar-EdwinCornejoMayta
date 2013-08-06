@@ -19,9 +19,26 @@ protected:
     void closeEvent(QCloseEvent *event);
 
 private slots:
+    /**
+     * @brief newFile
+     */
     void newFile();
+
+    /**
+     * @brief open
+     */
     void open();
+
+    /**
+     * @brief save
+     * @return
+     */
     bool save();
+
+    /**
+     * @brief saveAs
+     * @return
+     */
     bool saveAs();
     void find();
     void goToCell();
