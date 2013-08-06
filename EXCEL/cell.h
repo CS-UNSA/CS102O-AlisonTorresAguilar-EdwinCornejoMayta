@@ -22,6 +22,7 @@ private:
     numv          value;
     matrix        *currentMatrix;
     contentType   content;
+    bool          empty;
 public:
     /**
      * @brief cell
@@ -115,5 +116,7 @@ public:
      * @brief evaluate
      */
     void evaluate();
+
+    inline bool isEmpty() {return empty;}
 };
 #endif // CELL_H

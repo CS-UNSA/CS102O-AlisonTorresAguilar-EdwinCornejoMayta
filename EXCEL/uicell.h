@@ -4,6 +4,7 @@
 #include <QTableWidgetItem>
 #include "definedtypes.h"
 class cell;
+class UISpreadsheet;
 class UICell : public QTableWidgetItem
 {
 public:
@@ -72,11 +73,16 @@ public:
     void setCell(cell*c);
 
     void update();
+
+    inline void setWidget(UISpreadsheet *w){widget=w;}
+
 private:
 
     mutable QVariant cachedValue;
     mutable bool cacheIsDirty;
+    UISpreadsheet *widget;
     cell* currentCell;
+
 };
 
 

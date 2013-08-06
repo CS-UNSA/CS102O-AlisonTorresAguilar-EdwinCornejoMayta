@@ -2,7 +2,11 @@
 #include "uicell.h"
 #include <iostream>
 #include <cell.h>
-
+#include <QApplication>
+#include <QMessageBox>
+#include <QInputDialog>
+#include <QIcon>
+#include "uispreadsheet.h"
 using namespace std;
 UICell::UICell()
 {
@@ -26,7 +30,8 @@ QVariant UICell::data(int role) const
 {
     if (role == Qt::DisplayRole) {
        if (value().isValid()) {
-          // cout<<"value ****************"<<value().toString().toStdString()<<endl;
+          cout<<"value ****************"<<value().toString().toStdString()<<endl;
+        //  currentCell->update();
         //   this->QTableWidgetItem.
 
            return value().toString();
@@ -64,7 +69,7 @@ const QVariant Invalid;
 
 QVariant UICell::value() const
 {
-    try {
+  try {
         currentCell->setExpression(formula().toStdString());
         if(this->currentCell->getType()==TEXT){
             cachedValue=formula();
@@ -76,8 +81,15 @@ QVariant UICell::value() const
     }
 
     }catch(const char* msg){
-    cerr << msg << endl;
-    }
+   cerr << msg << endl;
+  // const QString m=QObject::tr(msg);
+
+ //  widget->messageToShow(QObject:: tr (msg));
+ /*  QMessageBox::information(widget,QObject::tr("Spreadsheet"),
+          QObject:: tr ("The information cannot be pasted because the copy "
+              "and paste areas aren't the same size."));
+   return cachedValue;*/
+   }
     return cachedValue;
 }
 

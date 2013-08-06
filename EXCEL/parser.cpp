@@ -59,7 +59,7 @@ void parser::getTokens(){
              t_type=OPERATOR;
         }
         else{
-            cerr<<"error"<<endl;
+             throw "There is a syntax error,please checkout!";
             break;
         }
 
@@ -123,7 +123,7 @@ void parser::toPostfix(){
             outputStack.push(t);
             break;
          default:
-            cerr<<"error sintactico";
+            throw "There is a syntax error,please checkout!";
             break;
         }// end switch
         tokenList.pop_front();

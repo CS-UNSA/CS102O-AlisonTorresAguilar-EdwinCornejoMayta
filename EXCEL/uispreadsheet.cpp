@@ -302,26 +302,31 @@ void UISpreadsheet::somethingChanged()
     currentT=text(currentRow(),currentColumn()).toStdString();
     spreadSheet->insertCell(currentRow(),currentColumn(),currentF);
 
-    cout<<"******************************************************"<<endl;
+    //cout<<"******************************************************"<<endl;
     cout<<" formula  "<<currentF<<endl;
     cout<<" text     "<<currentT<<endl;
     double value=this->spreadSheet->getValueAt(currentRow(),currentColumn());
+
     cout<<" value    "<<value<<endl;
 
-    cout<<currentRow()<<" ";
-    cout<<currentColumn()<<endl;
+   // cout<<currentRow()<<" ";
+   // cout<<currentColumn()<<endl;
 
     cout<<"***************************************************"<<endl;
-    */
 
+*/
 
    UICell *c = cell(currentRow(),currentColumn());
    c->setCell(spreadSheet->getCell(currentRow(),currentColumn()));
+   c->setWidget(this);
    // c->update();
     //cout<<" AQUI"<<c->formula().toStdString()<<endl;
     //setFormula(currentRow(),currentColumn(),"666");
     //cout<<"something changeeeeeeeeeeeeeeeeeeeeeeeeeeee"<<endl;
    this->setCurrentCell(currentRow()+1,currentColumn());
+
+
+
 }
 
 UICell *UISpreadsheet::cell(int row, int column) const
@@ -408,3 +413,10 @@ void UISpreadsheet::updateStatus(QTableWidgetItem *item)
         cellLabel->setText(tr("Cell: (%1)").arg(encode_pos(this->row(item), this->column(item))));
     }*/
 }
+
+void UISpreadsheet::messageToShow(QString message){
+    QMessageBox::information(this, tr("Spreadsheet"),
+            (message));
+
+}
+

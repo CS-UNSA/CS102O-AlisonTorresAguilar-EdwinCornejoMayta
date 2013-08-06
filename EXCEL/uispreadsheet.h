@@ -81,17 +81,22 @@ public slots:
      */
     void findPrevious(const QString &str, Qt::CaseSensitivity cs);
 
+    void messageToShow(QString message);
+
 signals:
     /**
      * @brief modified
      */
     void modified();
 
+
 private slots:
     /**
      * @brief somethingChanged
      */
     void somethingChanged();
+
+
 
 private:
     enum { MagicNumber = 0x7F51C883, RowCount = 999, ColumnCount = 26 };
@@ -149,6 +154,7 @@ private:
     matrix * spreadSheet;
     bool autoRecalc;
     void updateStatus(QTableWidgetItem *item);
+
 };
 
 

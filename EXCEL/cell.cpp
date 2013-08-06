@@ -3,6 +3,7 @@
 #include "matrix.h"
 cell::cell(){
    // value=-1;
+    empty=true;
 }
 
  void cell::setExpression(string e){
@@ -13,7 +14,7 @@ cell::cell(){
      content=tree->built(expression);
      if(content!=TEXT){
      value=tree->evaluateTree();
-   //  update();
+     empty=false;
      }
 
  }
