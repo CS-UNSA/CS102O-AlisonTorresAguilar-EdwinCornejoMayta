@@ -191,7 +191,7 @@ void UISpreadsheet::paste()
     
     for (int i = 0; i < numRows; ++i) {
         QStringList columns = rows[i].split('\t');
-        cout<<"---"<<columns[0].toStdString();
+       // cout<<"---"<<columns[0].toStdString();
       //  cout<<" tmb "<<columns[1].toStdString()<<endl;
         cout<<numRows<<"filas to copy"<<endl;
         for (int j = 0; j < numColumns; ++j) {
@@ -199,12 +199,12 @@ void UISpreadsheet::paste()
             cout<<"row"<<row<<endl;
             int column = range.leftColumn() + j;
             if (row < RowCount && column < ColumnCount)
-                setFormula(row, column, columns[j]);
+              setFormula(row, column, columns[j]);
             //somethingChanged();
-               // cout<<columns[j].toStdString()<<"should paste "<<endl;
+            //cout<<columns[j].toStdString()<<"should paste "<<row<<" "<<column<<endl;
         }
     }
-   // somethingChanged();
+  // somethingChanged();
 }
 
 void UISpreadsheet::del()
@@ -295,37 +295,13 @@ void UISpreadsheet::somethingChanged()
         recalculate();
         */
   //  emit modified();
-   /*
-    string currentF,currentT;
-
-    currentF=formula(currentRow(),currentColumn()).toStdString();
-    currentT=text(currentRow(),currentColumn()).toStdString();
-    spreadSheet->insertCell(currentRow(),currentColumn(),currentF);
-
-    //cout<<"******************************************************"<<endl;
-    cout<<" formula  "<<currentF<<endl;
-    cout<<" text     "<<currentT<<endl;
-    double value=this->spreadSheet->getValueAt(currentRow(),currentColumn());
-
-    cout<<" value    "<<value<<endl;
-
-   // cout<<currentRow()<<" ";
-   // cout<<currentColumn()<<endl;
-
-    cout<<"***************************************************"<<endl;
-
-*/
 
    UICell *c = cell(currentRow(),currentColumn());
    c->setCell(spreadSheet->getCell(currentRow(),currentColumn()));
    c->setWidget(this);
-   // c->update();
-    //cout<<" AQUI"<<c->formula().toStdString()<<endl;
-    //setFormula(currentRow(),currentColumn(),"666");
-    //cout<<"something changeeeeeeeeeeeeeeeeeeeeeeeeeeee"<<endl;
-   this->setCurrentCell(currentRow()+1,currentColumn());
-
-
+   c->update();
+   cout<<"something changeeeeeeeeeeeeeeeeeeeeeeeeeeee"<<endl;
+  // this->setCurrentCell(currentRow()+1,currentColumn());
 
 }
 
@@ -341,6 +317,8 @@ void UISpreadsheet::setFormula(int row, int column,
     if (!c) {
         c = new UICell;
         setItem(row, column, c);
+
+         c->setCell(spreadSheet->getCell(row,column));
     }
     c->setFormula(formula);
 }

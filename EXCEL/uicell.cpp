@@ -30,7 +30,7 @@ QVariant UICell::data(int role) const
 {
     if (role == Qt::DisplayRole) {
        if (value().isValid()) {
-          cout<<"value ****************"<<value().toString().toStdString()<<endl;
+         // cout<<"value ****************"<<value().toString().toStdString()<<endl;
         //  currentCell->update();
         //   this->QTableWidgetItem.
 
@@ -58,6 +58,7 @@ void UICell::setFormula(const QString &formula)
 QString UICell::formula() const
 {
     return data(Qt::EditRole).toString();
+
 }
 
 void UICell::setDirty()
@@ -78,6 +79,7 @@ QVariant UICell::value() const
         currentCell->setExpression(formula().toStdString());
         cachedValue=this->currentCell->getValue();
         cout<<formula().toStdString()<<endl;
+
     }
 
     }catch(const char* msg){

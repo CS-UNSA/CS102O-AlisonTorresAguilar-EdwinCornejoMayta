@@ -44,9 +44,11 @@
      ofstream file (filename);
      for (size i=0;i<currentRow;i++){
          for (size j=0;j<currentRow;j++){
-            file<<spreadSheet[i][j].getRow()<<" ";
-            file<<spreadSheet[i][j].getCol()<<" ";
-            file<<spreadSheet[i][j].getExpression();
+             if(!spreadSheet[i][j].isEmpty()){
+                file<<spreadSheet[i][j].getRow()<<" ";
+                file<<spreadSheet[i][j].getCol()<<" ";
+                file<<spreadSheet[i][j].getExpression();
+             }
          }
      }
  }
